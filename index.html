@@ -2245,37 +2245,76 @@ function openAdminPanel() {
    2) LAUNCHER_FILE — файл, лежащий рядом с index.html в папке downloads/
    Если есть и то и другое — приоритет у ссылки Releases. */
 const LAUNCHER_FILE = 'downloads/THETOWN-Setup-1.0.0.exe';
+/* Ссылка на файл установщика. Проверено: отдаёт THETOWN-Setup-1.0.0.exe (77 МБ).
+   Варианты на будущее:
+   • этот адрес (конкретный релиз): .../releases/download/v1.0.0/THETOWN-Setup-1.0.0.exe
+   • «всегда последний релиз»:      .../releases/latest/download/THETOWN-Setup-1.0.0.exe
+     (тогда при обновлении лаунчера сайт править не нужно — главное, чтобы имя файла
+      в релизе оставалось THETOWN-Setup-1.0.0.exe) */
 const LAUNCHER_RELEASE_URL = 'https://github.com/ilya211kaminskiy-coder/THETOWNN/releases/download/v1.0.0/THETOWN-Setup-1.0.0.exe';
 
-let launcherUrlCache;       
+let launcherUrlCache;
 async function findLauncherUrl() {
   if (launcherUrlCache !== undefined) return launcherUrlCache;
-  const candidates = [LAUNCHER_RELEASE_URL, LAUNCHER_FILE].filter(Boolean);
-  for (let i = 0; i < candidates.length; i++) {
+
+  /* 1) файл рядом с сайтом (папка downloads/) — это тот же домен, поэтому проверка работает */
+  if (LAUNCHER_FILE) {
     try {
-      const res = await fetch(candidates[i], { method: 'HEAD', cache: 'no-store' });
-      if (res.ok) { launcherUrlCache = candidates[i]; return launcherUrlCache; }
-    } catch (e) { /* пробуем следующий адрес */ }
+      const res = await fetch(LAUNCHER_FILE, { method: 'HEAD', cache: 'no-store' });
+      if (res.ok) { launcherUrlCache = LAUNCHER_FILE; return launcherUrlCache; }
+    } catch (e) { /* файла нет — идём дальше */ }
   }
+
+  /* 2) GitHub Releases. Проверить ссылку запросом из браузера нельзя: GitHub не отдаёт
+     CORS-заголовки для файлов релизов, поэтому любая проверка тут «падает» и кнопка
+     врала бы «установщик не загружен». Поэтому ссылку просто используем как есть. */
+  if (LAUNCHER_RELEASE_URL) { launcherUrlCache = LAUNCHER_RELEASE_URL; return launcherUrlCache; }
+
   launcherUrlCache = null;
   return null;
 }
 
+/* Запуск скачивания строго внутри клика: браузеры блокируют загрузку,
+   начатую после await (считают её не «пользовательской»). */
+function startLauncherDownload(url) {
+  toast('Начинаем загрузку установщика...', 'success');
+  try {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'THETOWN-Setup-1.0.0.exe';
+    /* GitHub отдаёт файл релиза с Content-Disposition: attachment,
+       поэтому браузер скачивает его сам, без перехода на страницу */
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (e) {
+    /* если браузер заблокировал «программный» клик — уводим на файл напрямую */
+    window.location.href = url;
+    return;
+  }
+  setTimeout(function () {
+    toast('Если загрузка не началась — нажми кнопку ещё раз или открой ссылку вручную: ' + url, 'info');
+  }, 5000);
+}
+
 async function downloadLauncher() {
+  /* адрес уже известен (подготовлен при загрузке страницы) — качаем мгновенно */
+  if (launcherUrlCache) { startLauncherDownload(launcherUrlCache); return; }
+
   const url = await findLauncherUrl();
   if (!url) {
     toast('Установщик ещё не загружен. Положи ' + LAUNCHER_FILE + ' или укажи LAUNCHER_RELEASE_URL', 'error');
     openModal('launcherModal');
     return;
   }
-  toast('Начинаем загрузку установщика...', 'success');
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'THETOWN-Setup-1.0.0.exe';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  startLauncherDownload(url);
 }
+
+/* готовим адрес заранее, чтобы клик по кнопке сразу начинал загрузку */
+window.addEventListener('load', function () {
+  setTimeout(function () { findLauncherUrl(); }, 600);
+});
 
 /* ---------------- COPY IP ---------------- */
 function copyIP() {
@@ -2570,5 +2609,5 @@ if (document.readyState === 'loading') {
 }
 
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5b785e0288d9f36',t:'MTc5NDg0Mjg4MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5b785e0288d9f36',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5b825950c1d6881',t:'MTc5NDg0OTQyMQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5b825950c1d6881',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
