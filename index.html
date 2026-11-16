@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="THETOWN">
+<meta property="og:title" content="THETOWN — Геополитический сервер Minecraft">
+<meta property="og:description" content="Сервер на реальной карте Земли: строй города, развивай экономику, веди дипломатию и войны — создай собственную Империю. IP: f1.rustix.me:35223">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THETOWN — Геополитический сервер Minecraft">
+<meta name="twitter:description" content="Реальная карта Земли, города, экономика, дипломатия и войны. IP: f1.rustix.me:35223">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23f59e0b'/><text x='50' y='72' font-size='62' font-family='Arial,Helvetica,sans-serif' font-weight='bold' text-anchor='middle' fill='%231a1206'>T</text></svg>">
+<title>THETOWN — Геополитический сервер Minecraft</title>
+<meta name="description" content="THETOWN — геополитический сервер Minecraft на реальной карте Земли. Строй города, развивай экономику, веди дипломатию и войны — создай собственную Империю.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.header .admin-btn{display:none}</style></noscript>
+<style>
+/* ============================================================
+   THETOWN — THEME
+   ============================================================ */
+:root{
+  --bg:#0b0d12;
+  --card:#131722;
+  --card-2:#0f1320;
+  --gold:#f59e0b;
+  --gold-l:#fbbf24;
+  --green:#10b981;
+  --red:#ef4444;
+  --blue:#38bdf8;
+  --purple:#a855f7;
+  --discord:#5865f2;
+  --text:#e8edf6;
+  --muted:#94a3b8;
+  --muted-2:#6b7a90;
+  --border:rgba(255,255,255,.075);
+  --border-2:rgba(255,255,255,.12);
+  --radius:22px;
+  --shadow:0 30px 80px -40px rgba(0,0,0,.95);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  min-height:100vh;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 12% -12%, rgba(245,158,11,.16), transparent 62%),
+    radial-gradient(820px 600px at 88% 2%, rgba(56,189,248,.11), transparent 60%),
+    radial-gradient(760px 520px at 50% 108%, rgba(168,85,247,.12), transparent 62%);
+}
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 78%);
+  mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 78%);
+}
+::selection{background:rgba(245,158,11,.35);color:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit}
+.hidden{display:none !important}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.wrap{position:relative;z-index:1}
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 22px}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:#0a0c11}
+::-webkit-scrollbar-thumb{background:#242b3a;border-radius:20px;border:3px solid #0a0c11}
+::-webkit-scrollbar-thumb:hover{background:#39435a}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 24px;border-radius:14px;
+  font-size:14px;font-weight:800;letter-spacing:.02em;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
+  white-space:nowrap;line-height:1.1;
+}
+.btn i{font-size:15px}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn-gold{
+  background:linear-gradient(135deg,#fbbf24,#f59e0b 55%,#d97706);
+  color:#1a1206;
+  box-shadow:0 14px 34px -14px rgba(245,158,11,.85), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.btn-gold:hover{box-shadow:0 20px 44px -14px rgba(245,158,11,1), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-ghost{background:rgba(255,255,255,.045);border-color:var(--border-2);color:var(--text);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}
+.btn-blue{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#04141f;box-shadow:0 14px 34px -16px rgba(56,189,248,.9)}
+.btn-purple{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;box-shadow:0 14px 34px -16px rgba(168,85,247,.9)}
+.btn-discord{background:linear-gradient(135deg,#5865f2,#4752c4);color:#fff;box-shadow:0 14px 34px -16px rgba(88,101,242,.9)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669);color:#02140e;box-shadow:0 14px 34px -16px rgba(16,185,129,.9)}
+.btn-red{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;box-shadow:0 14px 34px -16px rgba(239,68,68,.9)}
+.btn-sm{padding:11px 17px;font-size:12.5px;border-radius:11px}
+.btn-block{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  background:rgba(11,13,18,.66);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border-bottom:1px solid rgba(255,255,255,.05);
+  transition:background .3s, border-color .3s, box-shadow .3s;
+}
+.header.scrolled{background:rgba(9,11,16,.93);border-bottom-color:rgba(255,255,255,.09);box-shadow:0 18px 50px -30px #000}
+.header-inner{height:76px;display:flex;align-items:center;gap:26px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.brand-mark{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(150deg,#fbbf24,#f59e0b 45%,#b45309);
+  box-shadow:0 10px 26px -12px rgba(245,158,11,.95), inset 0 1px 0 rgba(255,255,255,.45);
+  color:#1a1206;font-size:19px;
+}
+.brand-text{font-family:'Luckiest Guy',cursive;font-size:22px;letter-spacing:1.2px;line-height:1;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.65)}
+.nav{display:flex;align-items:center;gap:4px;margin-left:8px}
+.nav a{
+  position:relative;font-size:13.5px;font-weight:700;color:var(--muted);
+  padding:10px 13px;border-radius:10px;transition:.2s;letter-spacing:.01em;
+}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.055)}
+.nav a::after{
+  content:'';position:absolute;left:13px;right:13px;bottom:4px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:.25s;
+}
+.nav a:hover::after{transform:scaleX(1)}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.header-ip{
+  display:inline-flex;align-items:center;gap:9px;padding:10px 15px;border-radius:12px;
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.32);color:#fcd34d;
+  font-size:12.5px;font-weight:800;letter-spacing:.03em;transition:.22s;
+}
+.header-ip:hover{background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.6);color:#fff}
+.header-ip i{font-size:12px}
+.icon-btn{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text);
+  font-size:15px;transition:.2s;
+}
+.icon-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
+.account-btn{
+  display:inline-flex;align-items:center;gap:9px;padding:9px 16px 9px 12px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text);
+  font-size:13px;font-weight:800;transition:.22s;
+}
+.account-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(245,158,11,.45)}
+.account-btn.account-chip{padding:5px 15px 5px 5px;border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.09)}
+.account-btn img{width:30px;height:30px;border-radius:8px;image-rendering:pixelated;background:#0c0f17}
+.admin-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:12px;
+  background:rgba(168,85,247,.13);border:1px solid rgba(168,85,247,.42);color:#d8b4fe;
+  font-size:12.5px;font-weight:800;transition:.22s;
+}
+.admin-btn:hover{background:rgba(168,85,247,.25);color:#fff;border-color:rgba(168,85,247,.75)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border-2);font-size:16px}
+.mobile-menu{
+  display:none;position:fixed;top:76px;left:0;right:0;z-index:119;
+  background:rgba(10,12,18,.98);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);padding:16px 22px 24px;
+  flex-direction:column;gap:6px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:13px 14px;border-radius:11px;font-weight:700;font-size:14.5px;color:var(--muted);background:rgba(255,255,255,.03)}
+.mobile-menu a:hover{background:rgba(245,158,11,.12);color:#fff}
+.mobile-menu .btn{margin-top:8px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;padding:150px 0 90px;text-align:center;overflow:hidden}
+.hero-glow{
+  position:absolute;top:-180px;left:50%;transform:translateX(-50%);
+  width:1000px;height:620px;border-radius:50%;
+  background:radial-gradient(circle, rgba(245,158,11,.19), rgba(245,158,11,0) 66%);
+  filter:blur(30px);pointer-events:none;
+}
+.badge-top{
+  display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:100px;
+  background:rgba(255,255,255,.045);border:1px solid var(--border-2);
+  font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#cbd5e1;
+  backdrop-filter:blur(8px);
+}
+.badge-top i{color:var(--gold)}
+.hero-status{margin-top:20px;display:flex;justify-content:center}
+.status-pill{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;
+  font-size:13px;font-weight:800;letter-spacing:.04em;border:1px solid;transition:.3s;
+}
+.status-pill .dot{width:9px;height:9px;border-radius:50%;position:relative;flex-shrink:0}
+.status-pill .dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid currentColor;opacity:.5;animation:pulseRing 1.9s ease-out infinite}
+@keyframes pulseRing{0%{transform:scale(.6);opacity:.75}100%{transform:scale(1.7);opacity:0}}
+.st-online{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.45);color:#34d399}
+.st-online .dot{background:#10b981;color:#10b981;box-shadow:0 0 12px #10b981}
+.st-maintenance{background:rgba(245,158,11,.11);border-color:rgba(245,158,11,.45);color:#fbbf24}
+.st-maintenance .dot{background:#f59e0b;color:#f59e0b;box-shadow:0 0 12px #f59e0b}
+.st-offline{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.45);color:#f87171}
+.st-offline .dot{background:#ef4444;color:#ef4444;box-shadow:0 0 12px #ef4444;animation:none}
+.hero-logo{
+  font-family:'Luckiest Guy',cursive;
+  font-size:clamp(58px,13.2vw,164px);
+  line-height:.95;
+  letter-spacing:clamp(1px,.9vw,7px);
+  margin:26px 0 6px;
+  background:linear-gradient(180deg,#ffffff 0%,#e7ecf3 28%,#9aa7b8 52%,#79879a 62%,#e2e8f0 84%,#f8fafc 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:
+    drop-shadow(3px 0 0 #05070b) drop-shadow(-3px 0 0 #05070b)
+    drop-shadow(0 3px 0 #05070b) drop-shadow(0 -3px 0 #05070b)
+    drop-shadow(2px 2px 0 #05070b) drop-shadow(-2px 2px 0 #05070b)
+    drop-shadow(2px -2px 0 #05070b) drop-shadow(-2px -2px 0 #05070b)
+    drop-shadow(0 12px 26px rgba(0,0,0,.85));
+  user-select:none;
+}
+.hero-sub{
+  font-family:'Luckiest Guy',cursive;font-size:clamp(13px,2.2vw,20px);letter-spacing:.42em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:22px;
+  text-shadow:0 2px 12px rgba(245,158,11,.5);
+}
+.hero-desc{max-width:720px;margin:0 auto;color:var(--muted);font-size:clamp(14.5px,1.6vw,17px);line-height:1.75}
+.hero-desc b{color:#fff;font-weight:800}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:36px}
+.hero-actions .btn{padding:16px 26px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:center;margin-top:44px;
+  color:var(--muted-2);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta i{color:var(--gold);font-size:13px}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section{padding:88px 0;position:relative}
+.section-head{text-align:center;max-width:760px;margin:0 auto 52px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:16px;
+}
+.eyebrow::before,.eyebrow::after{content:'';width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.section-head h2{
+  font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px;
+}
+.section-head h2 em{font-style:normal;color:var(--gold)}
+.section-head p{color:var(--muted);font-size:15px;line-height:1.7}
+
+/* CARD */
+.card{
+  position:relative;background:linear-gradient(170deg,#151a26 0%,#101420 100%);
+  border:1px solid var(--border);border-radius:var(--radius);padding:32px;
+  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+  background:radial-gradient(420px 200px at 50% -30%, rgba(245,158,11,.16), transparent 70%);
+  opacity:0;transition:opacity .35s;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.32);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:22px;
+  background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.3);color:var(--gold);
+  margin-bottom:22px;transition:.3s;
+}
+.card:hover .card-icon{background:rgba(245,158,11,.22);transform:scale(1.06) rotate(-4deg)}
+.card h3{font-size:19px;font-weight:800;margin-bottom:11px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.7}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+/* ============================================================
+   VOICE BANNER
+   ============================================================ */
+.voice-banner{
+  position:relative;border-radius:26px;padding:38px 40px;overflow:hidden;
+  background:linear-gradient(120deg, rgba(239,68,68,.14), rgba(245,158,11,.1) 45%, rgba(15,19,32,.6) 85%), #101420;
+  border:1px solid rgba(239,68,68,.32);
+  display:flex;align-items:center;gap:34px;flex-wrap:wrap;
+  box-shadow:0 30px 80px -50px rgba(239,68,68,.85);
+}
+.voice-banner::after{
+  content:'';position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle, rgba(239,68,68,.22), transparent 68%);pointer-events:none;
+}
+.voice-icon{
+  width:74px;height:74px;flex-shrink:0;border-radius:20px;display:grid;place-items:center;font-size:30px;
+  background:linear-gradient(140deg, rgba(239,68,68,.28), rgba(239,68,68,.1));
+  border:1px solid rgba(239,68,68,.5);color:#fca5a5;
+  box-shadow:0 16px 40px -22px rgba(239,68,68,.9);
+}
+.voice-body{flex:1;min-width:260px}
+.voice-tag{
+  display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:#fca5a5;background:rgba(239,68,68,.16);border:1px solid rgba(239,68,68,.4);
+  padding:5px 11px;border-radius:100px;margin-bottom:11px;
+}
+.voice-body h3{font-size:clamp(19px,2.4vw,25px);font-weight:900;margin-bottom:9px;letter-spacing:-.01em}
+.voice-body p{color:#c7d2e0;font-size:14.5px;max-width:640px;line-height:1.7}
+.voice-body p b{color:#fff}
+.voice-actions{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+
+/* ============================================================
+   STEPS
+   ============================================================ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{position:relative;padding-top:14px}
+.step-num{
+  font-family:'Luckiest Guy',cursive;font-size:54px;line-height:1;
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.14));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:16px;letter-spacing:2px;
+}
+.step .card{padding:30px}
+.step .card h3{display:flex;align-items:center;gap:10px}
+.step .card h3 i{color:var(--gold);font-size:16px}
+.step-link{
+  display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:800;
+  color:var(--gold);transition:.2s;
+}
+.step-link:hover{gap:11px;color:#fcd34d}
+
+/* ============================================================
+   MEDIA
+   ============================================================ */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.media-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.media-top{position:relative;padding:36px 32px 30px;overflow:hidden}
+.media-yt{background:linear-gradient(140deg, rgba(239,68,68,.22), rgba(15,19,32,.2) 70%)}
+.media-cc{background:linear-gradient(140deg, rgba(168,85,247,.2), rgba(15,19,32,.2) 70%)}
+.media-badge{
+  position:absolute;top:22px;right:22px;font-size:10.5px;font-weight:900;letter-spacing:.14em;
+  text-transform:uppercase;padding:6px 12px;border-radius:100px;border:1px solid;
+}
+.yt-badge{color:#fca5a5;border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.14)}
+.cc-badge{color:#d8b4fe;border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.14)}
+.media-avatar{
+  width:70px;height:70px;border-radius:18px;display:grid;place-items:center;font-size:30px;margin-bottom:20px;
+  background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(6px);
+}
+.media-yt .media-avatar{color:#ff4d4d;box-shadow:0 16px 40px -22px rgba(239,68,68,.95)}
+.media-cc .media-avatar{color:#c084fc;box-shadow:0 16px 40px -22px rgba(168,85,247,.95)}
+.media-top h3{font-size:21px;font-weight:900;margin-bottom:9px}
+.media-top p{color:var(--muted);font-size:14px;line-height:1.7;max-width:420px}
+.media-foot{padding:22px 32px 30px;display:flex;flex-wrap:wrap;gap:11px;border-top:1px solid var(--border);margin-top:auto}
+.channel-stats{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap}
+.channel-stat{font-size:12px;font-weight:700;color:var(--muted-2);letter-spacing:.05em;text-transform:uppercase}
+.channel-stat b{display:block;font-size:17px;color:#fff;letter-spacing:0;text-transform:none;margin-top:2px}
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.leader{display:flex;flex-direction:column;align-items:center;text-align:center;padding:38px 26px 32px}
+.leader-skin{
+  width:132px;height:200px;border-radius:18px;position:relative;margin-bottom:22px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(245,158,11,.2), transparent 64%),
+    linear-gradient(180deg,#0d111a,#121826);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+}
+.leader-skin::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:56px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));pointer-events:none;
+}
+.leader-skin img{image-rendering:pixelated;height:170px;width:auto;filter:drop-shadow(0 12px 20px rgba(0,0,0,.7));position:relative;z-index:1}
+.leader h3{font-size:19px;font-weight:900;margin-bottom:10px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:100px;
+  font-size:11.5px;font-weight:800;letter-spacing:.05em;border:1px solid;white-space:nowrap;
+}
+.badge-gold{color:#fcd34d;border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.12)}
+.badge-red{color:#fca5a5;border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.12)}
+.badge-blue{color:#7dd3fc;border-color:rgba(56,189,248,.45);background:rgba(56,189,248,.12)}
+.badge-purple{color:#d8b4fe;border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.12)}
+.badge-gray{color:#cbd5e1;border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.06)}
+.badge-green{color:#6ee7b7;border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.12)}
+.leader p{color:var(--muted);font-size:13.8px;line-height:1.7;margin-top:14px}
+
+/* ============================================================
+   SUPPORT
+   ============================================================ */
+.support-banner{
+  position:relative;border-radius:26px;padding:44px 44px;overflow:hidden;
+  background:linear-gradient(120deg, rgba(56,189,248,.16), rgba(15,19,32,.65) 62%), #101420;
+  border:1px solid rgba(56,189,248,.3);
+  box-shadow:0 30px 90px -55px rgba(56,189,248,.95);
+  display:flex;align-items:center;gap:34px;flex-wrap:wrap;
+}
+.support-banner::after{
+  content:'';position:absolute;left:-100px;bottom:-140px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle, rgba(56,189,248,.2), transparent 68%);pointer-events:none;
+}
+.support-icon{
+  width:74px;height:74px;flex-shrink:0;border-radius:20px;display:grid;place-items:center;font-size:29px;
+  background:linear-gradient(140deg, rgba(56,189,248,.28), rgba(56,189,248,.08));
+  border:1px solid rgba(56,189,248,.5);color:#7dd3fc;
+  box-shadow:0 16px 40px -22px rgba(56,189,248,.9);
+}
+.support-body{flex:1;min-width:260px}
+.support-body .voice-tag{color:#7dd3fc;background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.4)}
+.support-body h3{font-size:clamp(19px,2.4vw,25px);font-weight:900;margin-bottom:9px}
+.support-body p{color:#c7d2e0;font-size:14.5px;max-width:620px;line-height:1.7}
+.support-actions{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{border-top:1px solid var(--border);padding:52px 0 34px;background:rgba(8,10,15,.6);position:relative;z-index:1}
+.footer-top{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.055)}
+.footer-brand{max-width:340px}
+.footer-brand .brand{margin-bottom:16px}
+.footer-brand p{color:var(--muted-2);font-size:13.5px;line-height:1.75}
+.footer-cols{display:flex;gap:60px;flex-wrap:wrap}
+.footer-col h4{font-size:11.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.footer-col a,.footer-col button{display:block;color:var(--muted);font-size:13.5px;font-weight:600;margin-bottom:11px;transition:.2s;text-align:left;padding:0}
+.footer-col a:hover,.footer-col button:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:26px;color:var(--muted-2);font-size:12.5px}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(4,6,10,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  overflow-y:auto;
+}
+.modal.open{display:flex;animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box{
+  width:100%;max-width:530px;background:linear-gradient(180deg,#151a26,#10141f);
+  border:1px solid rgba(255,255,255,.1);border-radius:24px;
+  box-shadow:0 50px 120px -40px #000;position:relative;
+  animation:popIn .3s cubic-bezier(.2,.9,.3,1.2);margin:auto;
+  max-height:calc(100vh - 40px);display:flex;flex-direction:column;
+}
+@keyframes popIn{from{transform:translateY(24px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+.modal-lg{max-width:1000px}
+.modal-head{
+  display:flex;align-items:center;gap:16px;padding:24px 26px;border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.mh-icon{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:18px;flex-shrink:0;
+  border:1px solid;
+}
+.mh-gold{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.4);color:var(--gold)}
+.mh-blue{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.4);color:var(--blue)}
+.mh-purple{background:rgba(168,85,247,.14);border-color:rgba(168,85,247,.4);color:var(--purple)}
+.mh-title{flex:1;min-width:0}
+.mh-title h3{font-size:17px;font-weight:900;letter-spacing:-.01em}
+.mh-title span{font-size:12.5px;color:var(--muted);font-weight:600}
+.modal-close{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;
+  background:rgba(255,255,255,.06);border:1px solid var(--border-2);color:var(--muted);font-size:15px;transition:.2s;
+}
+.modal-close:hover{background:rgba(239,68,68,.18);border-color:rgba(239,68,68,.5);color:#fca5a5}
+.modal-body{padding:26px;overflow-y:auto;flex:1}
+
+/* TABS */
+.tabs{display:flex;gap:6px;padding:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;margin-bottom:22px}
+.tab{
+  flex:1;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:800;color:var(--muted);
+  transition:.22s;white-space:nowrap;
+}
+.tab:hover{color:#fff}
+.tab.active{background:linear-gradient(135deg,rgba(245,158,11,.95),rgba(217,119,6,.95));color:#1a1206;box-shadow:0 8px 22px -12px rgba(245,158,11,.95)}
+.tabs-lg .tab.active{background:linear-gradient(135deg,rgba(168,85,247,.95),rgba(124,58,237,.95));color:#fff;box-shadow:0 8px 22px -12px rgba(168,85,247,.95)}
+
+/* FORMS */
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  color:#8b98ad;margin-bottom:8px;
+}
+.field input,.field textarea{
+  width:100%;background:#0d111a;border:1px solid rgba(255,255,255,.09);border-radius:12px;
+  padding:13px 15px;color:var(--text);font-size:14px;font-weight:600;outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.field textarea{resize:vertical;min-height:104px;line-height:1.6}
+.field input:focus,.field textarea:focus{border-color:rgba(245,158,11,.6);box-shadow:0 0 0 4px rgba(245,158,11,.1);background:#0f1420}
+.field input::placeholder,.field textarea::placeholder{color:#4d596b;font-weight:600}
+.field input:disabled,.field textarea:disabled{opacity:.5;cursor:not-allowed}
+.form-note{font-size:12px;color:var(--muted-2);line-height:1.6;margin-top:-4px;margin-bottom:16px}
+.form-error{
+  font-size:12.8px;font-weight:700;color:#fca5a5;background:rgba(239,68,68,.1);
+  border:1px solid rgba(239,68,68,.35);border-radius:10px;padding:10px 13px;margin-bottom:14px;
+}
+
+/* PROFILE */
+.pf-head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.pf-head img{
+  width:74px;height:74px;border-radius:16px;image-rendering:pixelated;
+  background:#0c0f17;border:1px solid rgba(245,158,11,.35);
+  box-shadow:0 14px 34px -18px rgba(245,158,11,.9);
+}
+.pf-head .pf-nick{font-size:21px;font-weight:900;letter-spacing:-.01em;line-height:1.2}
+.pf-head .badge{margin-top:8px}
+.pf-rows{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.pf-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;background:#0f131d;font-size:13px}
+.pf-row span{color:var(--muted);font-weight:700}
+.pf-row b{font-weight:800;font-size:13px}
+.ban-block{
+  background:linear-gradient(120deg, rgba(239,68,68,.18), rgba(239,68,68,.07));
+  border:1px solid rgba(239,68,68,.45);border-radius:14px;padding:16px 18px;margin-bottom:20px;
+}
+.ban-block h4{display:flex;align-items:center;gap:9px;color:#fca5a5;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.ban-block p{font-size:13px;color:#fecaca;line-height:1.6}
+.ban-block p b{color:#fff}
+.pf-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pf-actions .btn{flex:1;min-width:130px}
+
+/* TOASTS */
+#toasts{
+  position:fixed;bottom:24px;right:24px;z-index:500;display:flex;flex-direction:column;gap:11px;
+  pointer-events:none;max-width:calc(100vw - 48px);
+}
+.toast{
+  display:flex;align-items:center;gap:11px;padding:14px 18px;border-radius:14px;
+  background:rgba(19,23,34,.98);border:1px solid var(--border-2);
+  box-shadow:0 24px 60px -24px #000;font-size:13.5px;font-weight:700;color:#fff;
+  animation:toastIn .32s cubic-bezier(.2,.9,.3,1.2);
+  backdrop-filter:blur(14px);pointer-events:auto;
+}
+.toast.out{animation:toastOut .32s ease forwards}
+@keyframes toastIn{from{transform:translateX(120%);opacity:0}to{transform:none;opacity:1}}
+@keyframes toastOut{to{transform:translateX(120%);opacity:0}}
+.toast i{font-size:16px;flex-shrink:0}
+.toast-success{border-color:rgba(16,185,129,.5)}
+.toast-success i{color:var(--green)}
+.toast-error{border-color:rgba(239,68,68,.5)}
+.toast-error i{color:var(--red)}
+.toast-info{border-color:rgba(56,189,248,.5)}
+.toast-info i{color:var(--blue)}
+
+/* TICKETS */
+.tickets-list{display:flex;flex-direction:column;gap:13px}
+.ticket{
+  background:#0f131d;border:1px solid var(--border);border-radius:16px;padding:17px 18px;
+  transition:border-color .22s;
+}
+.ticket:hover{border-color:rgba(255,255,255,.16)}
+.ticket-top{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.avatar-sm{width:36px;height:36px;border-radius:9px;image-rendering:pixelated;background:#0c0f17;border:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.ticket-top .t-name{font-size:13.5px;font-weight:800;line-height:1.25}
+.ticket-top .t-date{font-size:11.5px;color:var(--muted-2);font-weight:600}
+.ticket-id{margin-left:auto;font-size:11px;font-weight:800;color:var(--muted-2);background:rgba(255,255,255,.05);border:1px solid var(--border);padding:4px 9px;border-radius:7px;flex-shrink:0}
+.ticket-msg{font-size:13.5px;color:#c7d2e0;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.ticket-reply{
+  margin-top:13px;padding:13px 15px;border-radius:12px;
+  background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.28);
+}
+.ticket-reply .reply-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;font-weight:800;color:#6ee7b7;letter-spacing:.05em;text-transform:uppercase;margin-bottom:7px}
+.ticket-reply .reply-head b{color:#fff;letter-spacing:0;text-transform:none;font-size:12.5px}
+.ticket-reply .reply-head .r-date{color:var(--muted-2);text-transform:none;letter-spacing:0;font-weight:600}
+.ticket-reply p{font-size:13.5px;color:#d1fae5;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.ticket-foot{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.admin-reply-pending{font-size:12.5px;color:var(--muted-2);font-weight:700;margin-top:11px;display:flex;align-items:center;gap:7px}
+.empty{
+  text-align:center;padding:36px 20px;color:var(--muted-2);font-size:13.5px;font-weight:600;
+  border:1px dashed rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.015);
+}
+.empty i{display:block;font-size:26px;margin-bottom:12px;opacity:.5}
+
+/* ADMIN */
+.admin-toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.admin-section{margin-bottom:20px}
+.admin-section-title{font-size:11.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#8b98ad;margin-bottom:11px}
+.status-switch{display:flex;gap:7px;padding:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;flex-wrap:wrap}
+.status-switch button{
+  flex:1;min-width:110px;padding:11px 14px;border-radius:9px;font-size:12.5px;font-weight:800;color:var(--muted);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.22s;
+}
+.status-switch button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.status-switch button .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.sw-online.active{background:rgba(16,185,129,.18);color:#34d399;box-shadow:inset 0 0 0 1px rgba(16,185,129,.5)}
+.sw-maintenance.active{background:rgba(245,158,11,.18);color:#fbbf24;box-shadow:inset 0 0 0 1px rgba(245,158,11,.5)}
+.sw-offline.active{background:rgba(239,68,68,.18);color:#f87171;box-shadow:inset 0 0 0 1px rgba(239,68,68,.5)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat{
+  background:#0f131d;border:1px solid var(--border);border-radius:15px;padding:16px 17px;
+  position:relative;overflow:hidden;transition:.25s;
+}
+.stat:hover{border-color:rgba(255,255,255,.18);transform:translateY(-2px)}
+.stat .stat-label{display:block;font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-bottom:7px}
+.stat b{font-size:26px;font-weight:900;letter-spacing:-.02em;line-height:1}
+.stat::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+.stat.s-green::after{background:var(--green)}
+.stat.s-red::after{background:var(--red)}
+.stat.s-blue::after{background:var(--blue)}
+.search-wrap{position:relative;margin-bottom:14px}
+.search-wrap i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted-2);font-size:14px;pointer-events:none}
+.search-wrap input{
+  width:100%;background:#0d111a;border:1px solid rgba(255,255,255,.09);border-radius:12px;
+  padding:13px 15px 13px 43px;color:var(--text);font-size:13.5px;font-weight:600;outline:none;transition:.2s;
+}
+.search-wrap input:focus{border-color:rgba(168,85,247,.6);box-shadow:0 0 0 4px rgba(168,85,247,.1)}
+.players-list{display:flex;flex-direction:column;gap:9px;max-height:430px;overflow-y:auto;padding-right:4px}
+.prow{
+  display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:14px;
+  background:#0f131d;border:1px solid var(--border);transition:.2s;flex-wrap:wrap;
+}
+.prow:hover{border-color:rgba(255,255,255,.16);background:#111725}
+.prow img{width:40px;height:40px;border-radius:10px;image-rendering:pixelated;background:#0c0f17;border:1px solid rgba(255,255,255,.1)}
+.pinfo{flex:1;min-width:150px}
+.pnick{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pmeta{font-size:11.5px;color:var(--muted-2);font-weight:600;display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:3px}
+.pmeta i{font-size:10px;opacity:.8}
+.pactions{display:flex;gap:7px;flex-wrap:wrap}
+.mini{
+  padding:8px 12px;border-radius:9px;font-size:11.5px;font-weight:800;border:1px solid;transition:.2s;white-space:nowrap;
+}
+.mini-red{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:#fca5a5}
+.mini-red:hover:not(:disabled){background:rgba(239,68,68,.25);color:#fff}
+.mini-green{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:#6ee7b7}
+.mini-green:hover{background:rgba(16,185,129,.25);color:#fff}
+.mini-blue{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.4);color:#7dd3fc}
+.mini-blue:hover{background:rgba(56,189,248,.25);color:#fff}
+.mini-del{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:var(--muted)}
+.mini-del:hover:not(:disabled){background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.45);color:#fff}
+.mini:disabled{opacity:.35;cursor:not-allowed}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 10px var(--green);animation:blink 2s infinite}
+.sync-dot.err{background:var(--red);box-shadow:0 0 10px var(--red)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ============================================================
+   LAUNCHER
+   ============================================================ */
+.launcher-banner{
+  position:relative;border-radius:26px;padding:38px 40px;overflow:hidden;
+  background:linear-gradient(120deg, rgba(245,158,11,.16), rgba(56,189,248,.08) 55%, rgba(15,19,32,.65) 88%), #101420;
+  border:1px solid rgba(245,158,11,.34);
+  display:flex;align-items:center;gap:34px;flex-wrap:wrap;
+  box-shadow:0 30px 80px -50px rgba(245,158,11,.9);
+}
+.launcher-banner::after{
+  content:'';position:absolute;right:-100px;top:-120px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle, rgba(245,158,11,.22), transparent 68%);pointer-events:none;
+}
+.launcher-banner .voice-icon{
+  background:linear-gradient(140deg, rgba(245,158,11,.28), rgba(245,158,11,.08));
+  border-color:rgba(245,158,11,.5);color:#fcd34d;
+  box-shadow:0 16px 40px -22px rgba(245,158,11,.9);
+}
+.launcher-banner .voice-tag{color:#fcd34d;background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.42)}
+.launcher-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;margin-top:22px}
+.dl-card{padding:32px;display:flex;flex-direction:column}
+.dl-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.dl-mark{
+  width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:22px;flex-shrink:0;
+  background:linear-gradient(150deg,#fbbf24,#f59e0b 55%,#b45309);color:#1a1206;
+  box-shadow:0 14px 32px -18px rgba(245,158,11,.95);
+}
+.dl-head h3{font-size:19px;font-weight:900;letter-spacing:-.01em}
+.dl-head span{font-size:12.5px;color:var(--muted);font-weight:700}
+.dl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.dl-chip{
+  font-size:11.5px;font-weight:800;padding:7px 12px;border-radius:9px;
+  background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:#cbd5e1;
+}
+.dl-chip.green{color:#6ee7b7;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.38)}
+.dl-chip.gold{color:#fcd34d;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.38)}
+.dl-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:auto}
+.dl-req{display:flex;flex-direction:column;gap:9px;margin:4px 0 16px;padding:14px 15px;border-radius:13px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.dl-req-row{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);font-weight:600}
+.dl-req-row i{width:16px;text-align:center;color:var(--gold);font-size:12px;flex-shrink:0}
+.dl-note{font-size:12px;color:var(--muted-2);line-height:1.65;margin-top:14px}
+.dl-note b{color:#cbd5e1}
+.feature-row{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.feature-row:last-child{border-bottom:none;padding-bottom:0}
+.feature-row:first-child{padding-top:0}
+.feature-ic{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:15px;flex-shrink:0;
+  background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.32);color:#7dd3fc;
+}
+.feature-row h4{font-size:13.8px;font-weight:800;margin-bottom:3px}
+.feature-row p{font-size:12.5px;color:var(--muted);line-height:1.55}
+.steps-list{counter-reset:step;display:flex;flex-direction:column;gap:14px}
+.steps-list li{list-style:none;display:flex;gap:13px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.steps-list li::before{
+  counter-increment:step;content:counter(step);
+  width:26px;height:26px;border-radius:9px;flex-shrink:0;display:grid;place-items:center;
+  font-size:12px;font-weight:900;color:#1a1206;
+  background:linear-gradient(150deg,#fbbf24,#f59e0b);
+}
+.steps-list li b{color:#fff}
+.warn-box{
+  margin-top:16px;padding:13px 15px;border-radius:12px;font-size:12.5px;line-height:1.6;
+  background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.28);color:#bae6fd;
+}
+.warn-box b{color:#fff}
+@media (max-width:900px){
+  .launcher-grid{grid-template-columns:1fr}
+  .launcher-banner{padding:30px 26px;gap:22px}
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+}
+@media print{.reveal{opacity:1 !important;transform:none !important}}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1080px){
+  .nav{display:none}
+  .burger{display:grid}
+  .header-ip{display:none}
+}
+@media (max-width:900px){
+  .grid-3,.steps,.team-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .voice-banner,.support-banner{padding:30px 26px;gap:22px}
+  .voice-actions,.support-actions{flex-direction:row;flex-wrap:wrap;width:100%}
+  .voice-actions .btn,.support-actions .btn{flex:1;min-width:150px}
+  section{padding:66px 0}
+  .hero{padding:126px 0 66px}
+}
+@media (max-width:640px){
+  .header-inner{height:68px;gap:12px}
+  .mobile-menu{top:68px}
+  .brand-text{font-size:19px}
+  .brand-mark{width:38px;height:38px;font-size:17px}
+  .account-btn span{display:none}
+  .account-btn.account-chip span{display:inline;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .admin-btn span{display:none}
+  .hero-actions .btn{width:100%}
+  .hero-meta{gap:10px 18px;font-size:11px}
+  .modal{padding:12px}
+  .modal-box{max-height:calc(100vh - 24px)}
+  .modal-head{padding:18px}
+  .modal-body{padding:18px}
+  .card{padding:24px}
+  .leader-skin{height:180px}
+  .leader-skin img{height:150px}
+  .footer-cols{gap:34px}
+  #toasts{left:12px;right:12px;bottom:12px;max-width:none}
+  .toast{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#top" class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-cube"></i></div>
+      <div class="brand-text">THETOWN</div>
+    </a>
+
+    <nav class="nav">
+      <a href="#about">О сервере</a>
+      <a href="#launcher">Лаунчер</a>
+      <a href="#start">Как начать</a>
+      <a href="#media">Медиа</a>
+      <a href="#team">Руководство</a>
+      <a href="#support">Поддержка</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="admin-btn hidden" id="adminBtn" title="Админ-панель">
+        <i class="fa-solid fa-user-shield"></i><span>Админ-панель</span>
+      </button>
+      <button class="btn btn-gold btn-sm header-launcher" data-download title="Скачать лаунчер THETOWN">
+        <i class="fa-solid fa-download"></i><span>Скачать лаунчер</span>
+      </button>
+      <button class="header-ip" data-copy-ip title="Скопировать IP сервера">
+        <i class="fa-solid fa-copy"></i>f1.rustix.me:35223
+      </button>
+      <button class="account-btn" id="accountBtn">
+        <i class="fa-solid fa-user"></i><span>Аккаунт</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Меню"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">О сервере</a>
+  <a href="#launcher">Лаунчер</a>
+  <a href="#start">Как начать</a>
+  <a href="#media">Медиа</a>
+  <a href="#team">Руководство</a>
+  <a href="#support">Поддержка</a>
+  <button class="btn btn-gold btn-block" data-download><i class="fa-solid fa-download"></i>Скачать лаунчер</button>
+  <button class="btn btn-ghost btn-block" data-copy-ip><i class="fa-solid fa-copy"></i>Скопировать IP</button>
+</div>
+
+<div class="wrap" id="top">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="badge-top"><i class="fa-solid fa-earth-americas"></i> Геополитический сервер Minecraft</div>
+
+      <div class="hero-status">
+        <div class="status-pill st-online" id="statusPill">
+          <span class="dot"></span>
+          <span id="statusText">Сервер включен</span>
+        </div>
+      </div>
+
+      <h1 class="hero-logo">THETOWN</h1>
+      <div class="hero-sub">Твоя Империя начинается здесь</div>
+
+      <p class="hero-desc">
+        Геополитический сервер Minecraft на <b>реальной карте Земли</b>. Игроки начинают с нуля,
+        строят города, развивают экономику, ведут дипломатию и войны — создавая
+        <b>собственную Империю</b>.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-gold" data-download>
+          <i class="fa-solid fa-download"></i>Скачать лаунчер
+        </button>
+        <button class="btn btn-ghost" data-copy-ip>
+          <i class="fa-solid fa-copy"></i>IP: f1.rustix.me:35223
+        </button>
+        <a class="btn btn-discord" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
+          <i class="fa-brands fa-discord"></i>Наш Discord
+        </a>
+        <button class="btn btn-ghost" id="heroSupportBtn">
+          <i class="fa-solid fa-headset"></i>Техподдержка
+        </button>
+      </div>
+
+      <div class="hero-meta">
+        <span><i class="fa-solid fa-cubes"></i>Java Edition</span>
+        <span><i class="fa-solid fa-microphone-lines"></i>Voice Chat в лаунчере</span>
+        <span><i class="fa-solid fa-globe"></i>Карта Земли</span>
+        <span><i class="fa-solid fa-flag"></i>Города и Империи</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">О сервере</div>
+        <h2>Мир, где историю пишешь <em>ты</em></h2>
+        <p>THETOWN — это не просто выживание. Это живые государства, границы, союзы, торговые пути и войны за территории на карте настоящей Земли.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-earth-europe"></i></div>
+          <h3>Реальная карта Земли</h3>
+          <p>Сервер построен на масштабной карте реальной планеты. Выбирай место для основания города — от берегов Средиземного моря до сибирских просторов — и закрепляй за собой настоящую территорию.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-city"></i></div>
+          <h3>От поселения до Империи</h3>
+          <p>Начни с одного дома и шахты. Развивай производство, налаживай торговлю, привлекай жителей, расширяй границы — и преврати скромное поселение в могущественную Империю.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fa-solid fa-handshake-simple"></i></div>
+          <h3>Геополитика и Войны</h3>
+          <p>Заключай союзы, веди переговоры, торгуй ресурсами или объявляй войны. Каждое решение влияет на баланс сил: дипломатия здесь так же важна, как и армия.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LAUNCHER ==================== -->
+  <section id="launcher" style="padding-top:0">
+    <div class="container">
+      <div class="launcher-banner reveal">
+        <div class="voice-icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="voice-body">
+          <div class="voice-tag"><i class="fa-solid fa-star"></i>Официальный лаунчер</div>
+          <h3>Лаунчер THETOWN — всё готово к игре</h3>
+          <p>Ничего не нужно устанавливать вручную: лаунчер сам скачает <b>Java 17</b>, <b>Minecraft 1.20.1</b>, <b>Forge</b>, обязательный мод <b>Simple Voice Chat</b> и кастомное меню THETOWN. Вход — твоим аккаунтом с сайта.</p>
+        </div>
+        <div class="voice-actions">
+          <button class="btn btn-gold" data-download>
+            <i class="fa-solid fa-download"></i>Скачать установщик
+          </button>
+          <button class="btn btn-ghost" id="howInstallBtn">
+            <i class="fa-solid fa-circle-info"></i>Как установить
+          </button>
+        </div>
+      </div>
+
+      <div class="launcher-grid">
+        <div class="card dl-card reveal">
+          <div class="dl-head">
+            <div class="dl-mark">T</div>
+            <div>
+              <h3>THETOWN Launcher</h3>
+              <span>Windows 10 / 11 · 64-bit</span>
+            </div>
+          </div>
+
+          <div class="dl-chips">
+            <span class="dl-chip gold">Версия 1.0.0</span>
+            <span class="dl-chip">Minecraft 1.20.1</span>
+            <span class="dl-chip">Forge 47.4.28</span>
+            <span class="dl-chip green">Voice Chat внутри</span>
+            <span class="dl-chip">~130 МБ</span>
+          </div>
+
+          <div class="dl-actions">
+            <button class="btn btn-gold" data-download>
+              <i class="fa-solid fa-download"></i>Скачать THETOWN-Setup.exe
+            </button>
+            <button class="btn btn-ghost" id="howInstallBtn2">
+              <i class="fa-solid fa-question"></i>Инструкция
+            </button>
+          </div>
+
+          <div class="dl-req">
+            <div class="dl-req-row"><i class="fa-brands fa-windows"></i><span>Windows 10 / 11 · 64-bit</span></div>
+            <div class="dl-req-row"><i class="fa-solid fa-memory"></i><span>4 ГБ ОЗУ (рекомендуется 6 ГБ)</span></div>
+            <div class="dl-req-row"><i class="fa-solid fa-hard-drive"></i><span>~2 ГБ свободного места</span></div>
+            <div class="dl-req-row"><i class="fa-solid fa-user-check"></i><span>Аккаунт THETOWN с сайта</span></div>
+          </div>
+
+          <div class="dl-note">
+            Установщик создаёт ярлык на рабочем столе и запись в «Установка и удаление программ».
+            <b>Удаление</b> — через панель Windows или кнопкой «Удалить» в настройках лаунчера.
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="font-size:17px;font-weight:900;margin-bottom:18px;letter-spacing:-.01em">Что внутри лаунчера</h3>
+
+          <div class="feature-row">
+            <div class="feature-ic"><i class="fa-brands fa-java"></i></div>
+            <div>
+              <h4>Java 17 автоматом</h4>
+              <p>Если Java не найдена в системе — лаунчер скачает и установит её сам.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-ic"><i class="fa-solid fa-cube"></i></div>
+            <div>
+              <h4>Forge 1.20.1 под ключ</h4>
+              <p>Нужная версия Forge, библиотеки и ресурсы игры скачиваются при первом запуске.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-ic"><i class="fa-solid fa-microphone-lines"></i></div>
+            <div>
+              <h4>Simple Voice Chat уже стоит</h4>
+              <p>Мод обновляется автоматически — вручную ничего качать не нужно.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-ic"><i class="fa-solid fa-image"></i></div>
+            <div>
+              <h4>Кастомное меню THETOWN</h4>
+              <p>Фирменная панорама ночного города на главном экране Minecraft.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-ic"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div>
+              <h4>Синхронизация аккаунта</h4>
+              <p>Один ник и пароль с сайтом: роль, город и статус подтягиваются в лаунчер.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW TO START ==================== -->
+  <section id="start">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Как начать играть</div>
+        <h2>Три шага до <em>первого города</em></h2>
+        <p>Установка лаунчера и первый вход занимают пару минут. Дальше — только кнопка «Играть».</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <div class="card">
+            <h3><i class="fa-solid fa-download"></i>Установи лаунчер</h3>
+            <p>Скачай <b>THETOWN-Setup.exe</b>, запусти установщик и следуй подсказкам. Лаунчер сам скачает Java, Forge 1.20.1 и мод Simple Voice Chat.</p>
+            <button class="step-link" data-download style="background:none;border:none;padding:0">
+              Скачать лаунчер <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <div class="card">
+            <h3><i class="fa-solid fa-user-check"></i>Войди в аккаунт</h3>
+            <p>В лаунчере введи тот же ник и пароль, что и на сайте THETOWN — аккаунт синхронизируется, а игра запустится под твоим ником.</p>
+            <a class="step-link" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
+              Нет аккаунта? Discord <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <div class="card">
+            <h3><i class="fa-solid fa-play"></i>Нажми «Играть»</h3>
+            <p>Лаунчер запустит Minecraft и сразу подключит тебя к <b>f1.rustix.me:35223</b>. Голосовой чат и кастомное меню уже включены.</p>
+            <button class="step-link" data-copy-ip style="background:none;border:none;padding:0">
+              Скопировать IP <i class="fa-solid fa-copy"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MEDIA ==================== -->
+  <section id="media">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Медиа Проекта</div>
+        <h2>Контент о <em>THETOWN</em></h2>
+        <p>Следи за жизнью сервера, смотри ролики о войнах и союзах — или стань голосом проекта и снимай собственные истории.</p>
+      </div>
+
+      <div class="media-grid">
+        <div class="card media-card reveal">
+          <div class="media-top media-yt">
+            <div class="media-badge yt-badge">Официальный канал</div>
+            <div class="media-avatar"><i class="fa-brands fa-youtube"></i></div>
+            <h3>Vunpos</h3>
+            <p>YouTube-канал создателя THETOWN: обзоры, хроники войн, развитие городов и всё, что происходит на сервере.</p>
+            <div class="channel-stats">
+              <div class="channel-stat">Формат<b>Игры и хроники</b></div>
+              <div class="channel-stat">Автор<b>Vunpos</b></div>
+            </div>
+          </div>
+          <div class="media-foot">
+            <a class="btn btn-red btn-sm" href="https://www.youtube.com/@Vunpos" target="_blank" rel="noopener">
+              <i class="fa-brands fa-youtube"></i>Смотреть канал
+            </a>
+            <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/@Vunpos" target="_blank" rel="noopener">
+              <i class="fa-solid fa-bell"></i>Подписаться
+            </a>
+          </div>
+        </div>
+
+        <div class="card media-card reveal">
+          <div class="media-top media-cc">
+            <div class="media-badge cc-badge">Для креаторов</div>
+            <div class="media-avatar"><i class="fa-solid fa-video"></i></div>
+            <h3>Стань контент-креатором</h3>
+            <p>Снимаешь видео, стримишь или ведёшь канал? Получи статус официального креатора THETOWN, поддержку проекта и доступ к ивентам.</p>
+            <div class="channel-stats">
+              <div class="channel-stat">Заявка<b>Через Discord</b></div>
+              <div class="channel-stat">Ответ<b>От администрации</b></div>
+            </div>
+          </div>
+          <div class="media-foot">
+            <a class="btn btn-purple btn-sm" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
+              <i class="fa-solid fa-paper-plane"></i>Подать заявку
+            </a>
+            <a class="btn btn-ghost btn-sm" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
+              <i class="fa-brands fa-discord"></i>Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEAM ==================== -->
+  <section id="team">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Руководство THETOWN</div>
+        <h2>Те, кто держит <em>сервер</em></h2>
+        <p>Команда проекта, которая отвечает за развитие, контент и техническую поддержку THETOWN.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="card leader reveal">
+          <div class="leader-skin">
+            <img src="https://minotar.net/armor/body/Vunpos/120.png" alt="Vunpos" loading="lazy" onerror="this.style.opacity=.15">
+          </div>
+          <h3>Vunpos</h3>
+          <span class="badge badge-gold"><i class="fa-solid fa-crown"></i>Создатель сервера</span>
+          <p>Основатель и главный руководитель проекта THETOWN. Отвечает за развитие сервера, концепцию и стратегию проекта.</p>
+        </div>
+
+        <div class="card leader reveal">
+          <div class="leader-skin">
+            <img src="https://minotar.net/armor/body/MrLov3n4ik/120.png" alt="MrLov3n4ik" loading="lazy" onerror="this.style.opacity=.15">
+          </div>
+          <h3>MrLov3n4ik</h3>
+          <span class="badge badge-red"><i class="fa-solid fa-video"></i>Контент-креатор</span>
+          <p>Официальный медиа-креатор проекта. Отвечает за съёмки, контент и ивенты THETOWN.</p>
+        </div>
+
+        <div class="card leader reveal">
+          <div class="leader-skin">
+            <img src="https://minotar.net/armor/body/Sanraizzz/120.png" alt="Sanraizzz" loading="lazy" onerror="this.style.opacity=.15">
+          </div>
+          <h3>Sanraizzz</h3>
+          <span class="badge badge-blue"><i class="fa-solid fa-shield-halved"></i>Администратор • Техподдержка</span>
+          <p>Руководитель технической поддержки THETOWN. Помогает игрокам с подключением, модами и возникающими проблемами.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUPPORT ==================== -->
+  <section id="support">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Техническая поддержка</div>
+        <h2>Возникли <em>вопросы?</em></h2>
+        <p>Не можешь подключиться, не работает голосовой чат или нашёл баг — напиши нам, и администрация поможет.</p>
+      </div>
+
+      <div class="support-banner reveal">
+        <div class="support-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="support-body">
+          <div class="voice-tag"><i class="fa-solid fa-life-ring"></i>Мы на связи</div>
+          <h3>Техническая поддержка THETOWN</h3>
+          <p>Отправь обращение прямо на сайте — тикет увидит администрация и ответит здесь же. Либо создай тему в Discord-канале поддержки.</p>
+        </div>
+        <div class="support-actions">
+          <button class="btn btn-blue" id="supportBtn">
+            <i class="fa-solid fa-paper-plane"></i>Написать в техподдержку
+          </button>
+          <a class="btn btn-discord" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
+            <i class="fa-brands fa-discord"></i>Тикеты в Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">
+            <div class="brand-mark"><i class="fa-solid fa-cube"></i></div>
+            <div class="brand-text">THETOWN</div>
+          </div>
+          <p>Геополитический сервер Minecraft на реальной карте Земли. Строй города, развивай экономику, веди дипломатию и войны — создай собственную Империю.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Навигация</h4>
+            <a href="#about">О сервере</a>
+            <a href="#launcher">Лаунчер</a>
+            <a href="#start">Как начать</a>
+            <a href="#media">Медиа</a>
+            <a href="#team">Руководство</a>
+          </div>
+          <div class="footer-col">
+            <h4>Сервер</h4>
+            <button data-copy-ip>IP: f1.rustix.me:35223</button>
+            <button data-download>Скачать лаунчер</button>
+            <a href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">Discord</a>
+            <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener">Simple Voice Chat</a>
+            <a href="https://www.youtube.com/@Vunpos" target="_blank" rel="noopener">YouTube — Vunpos</a>
+          </div>
+          <div class="footer-col">
+            <h4>Помощь</h4>
+            <button id="footerSupportBtn">Техподдержка</button>
+            <button id="footerAccountBtn">Личный кабинет</button>
+            <a href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">Правила сервера</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> THETOWN. Все права защищены.</span>
+        <span>Не является официальным продуктом Mojang Studios / Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== ACCOUNT MODAL ==================== -->
+<div class="modal" id="accountModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="mh-icon mh-gold"><i class="fa-solid fa-user"></i></div>
+      <div class="mh-title">
+        <h3>Личный кабинет</h3>
+        <span id="accountModalSub">Вход и регистрация в THETOWN</span>
+      </div>
+      <button class="modal-close" data-close="accountModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+
+      <!-- AUTH VIEW -->
+      <div id="authView">
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Вход</button>
+          <button class="tab" data-tab="register">Регистрация</button>
+        </div>
+
+        <form id="loginForm" autocomplete="off">
+          <div id="loginError" class="form-error hidden"></div>
+          <div class="field">
+            <label for="loginNick">Никнейм в Minecraft</label>
+            <input type="text" id="loginNick" placeholder="Например: Vunpos" maxlength="16" required>
+          </div>
+          <div class="field">
+            <label for="loginPass">Пароль</label>
+            <input type="password" id="loginPass" placeholder="Твой пароль" maxlength="64" required>
+          </div>
+          <button class="btn btn-gold btn-block" type="submit" id="loginSubmit">
+            <i class="fa-solid fa-right-to-bracket"></i>Войти
+          </button>
+          <p class="form-note" style="margin-top:14px;margin-bottom:0">Нет аккаунта? Переключись на вкладку «Регистрация».</p>
+        </form>
+
+        <form id="registerForm" class="hidden" autocomplete="off">
+          <div id="registerError" class="form-error hidden"></div>
+          <div class="field">
+            <label for="regNick">Никнейм в Minecraft</label>
+            <input type="text" id="regNick" placeholder="Твой игровой ник" maxlength="16" required>
+          </div>
+          <div class="field">
+            <label for="regPass">Пароль</label>
+            <input type="password" id="regPass" placeholder="Минимум 4 символа" maxlength="64" required>
+          </div>
+          <div class="field">
+            <label for="regPass2">Повтори пароль</label>
+            <input type="password" id="regPass2" placeholder="Повтори пароль" maxlength="64" required>
+          </div>
+          <button class="btn btn-gold btn-block" type="submit" id="regSubmit">
+            <i class="fa-solid fa-user-plus"></i>Создать аккаунт
+          </button>
+          <p class="form-note" style="margin-top:14px;margin-bottom:0">Используй свой игровой ник — по нему загружается скин.</p>
+        </form>
+      </div>
+
+      <!-- PROFILE VIEW -->
+      <div id="profileView" class="hidden">
+        <div class="pf-head">
+          <img id="pfSkin" src="https://minotar.net/helm/Steve/150.png" alt="Скин">
+          <div style="min-width:0">
+            <div class="pf-nick" id="pfNick">—</div>
+            <span class="badge badge-gray" id="pfRole">Игрок THETOWN</span>
+          </div>
+        </div>
+
+        <div class="pf-rows">
+          <div class="pf-row"><span>Статус аккаунта</span><b id="pfStatus">—</b></div>
+          <div class="pf-row"><span>Дата регистрации</span><b id="pfDate">—</b></div>
+        </div>
+
+        <div id="banBlock" class="ban-block hidden">
+          <h4><i class="fa-solid fa-ban"></i>Аккаунт заблокирован</h4>
+          <p>Причина: <b id="banReason">—</b></p>
+          <p style="margin-top:6px;opacity:.85">Редактирование профиля недоступно. Обратись в техподдержку или Discord.</p>
+        </div>
+
+        <div class="field">
+          <label for="cityInput">Твой город / Империя на сервере</label>
+          <input type="text" id="cityInput" placeholder="Например: Римская Империя" maxlength="48">
+        </div>
+
+        <div class="pf-actions">
+          <button class="btn btn-gold" id="saveCityBtn"><i class="fa-solid fa-floppy-disk"></i>Сохранить</button>
+          <button class="btn btn-ghost" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i>Выйти</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SUPPORT MODAL ==================== -->
+<div class="modal" id="supportModal">
+  <div class="modal-box modal-lg">
+    <div class="modal-head">
+      <div class="mh-icon mh-blue"><i class="fa-solid fa-headset"></i></div>
+      <div class="mh-title">
+        <h3>Техническая поддержка</h3>
+        <span>Опиши проблему — администрация ответит здесь</span>
+      </div>
+      <button class="modal-close" data-close="supportModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="ticketForm" autocomplete="off">
+        <div id="ticketError" class="form-error hidden"></div>
+        <div class="field">
+          <label for="ticketNick">Никнейм в Minecraft</label>
+          <input type="text" id="ticketNick" placeholder="Твой игровой ник" maxlength="16" required>
+        </div>
+        <div class="field">
+          <label for="ticketMsg">Текст проблемы</label>
+          <textarea id="ticketMsg" placeholder="Опиши проблему как можно подробнее: что произошло, когда, какие ошибки видишь..." maxlength="1200" required></textarea>
+        </div>
+        <button class="btn btn-blue btn-block" type="submit" id="ticketSubmit">
+          <i class="fa-solid fa-paper-plane"></i>Отправить обращение
+        </button>
+      </form>
+
+      <div style="display:flex;align-items:center;gap:12px;margin:26px 0 16px">
+        <div style="flex:1;height:1px;background:rgba(255,255,255,.08)"></div>
+        <span style="font-size:11.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#6b7a90">Обращения</span>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,.08)"></div>
+      </div>
+
+      <div id="ticketList" class="tickets-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ADMIN MODAL ==================== -->
+<div class="modal" id="adminModal">
+  <div class="modal-box modal-lg">
+    <div class="modal-head">
+      <div class="mh-icon mh-purple"><i class="fa-solid fa-user-shield"></i></div>
+      <div class="mh-title">
+        <h3>Админ-панель</h3>
+        <span>Управление сервером THETOWN</span>
+      </div>
+      <button class="modal-close" data-close="adminModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="admin-toolbar">
+        <button class="btn btn-purple btn-sm" id="refreshDbBtn">
+          <i class="fa-solid fa-rotate"></i>Обновить базу данных
+        </button>
+        <span class="small muted" style="display:inline-flex;align-items:center;gap:8px">
+          <span class="sync-dot" id="syncDot"></span>
+          <span id="lastSync">Синхронизация: —</span>
+        </span>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-title">Статус сервера на сайте</div>
+        <div class="status-switch" id="statusSwitch">
+          <button data-status="online" class="sw-online"><span class="dot"></span>Включен</button>
+          <button data-status="maintenance" class="sw-maintenance"><span class="dot"></span>На тех. работах</button>
+          <button data-status="offline" class="sw-offline"><span class="dot"></span>Выключен</button>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-label">Всего аккаунтов</span>
+          <b id="stTotal">0</b>
+        </div>
+        <div class="stat s-green">
+          <span class="stat-label">Активных игроков</span>
+          <b id="stActive">0</b>
+        </div>
+        <div class="stat s-red">
+          <span class="stat-label">Заблокировано</span>
+          <b id="stBanned">0</b>
+        </div>
+        <div class="stat s-blue">
+          <span class="stat-label">Обращений в ТП</span>
+          <b id="stTickets">0</b>
+        </div>
+      </div>
+
+      <div class="tabs tabs-lg">
+        <button class="tab active" data-atab="players">Игроки</button>
+        <button class="tab" data-atab="tickets">Тикеты техподдержки</button>
+      </div>
+
+      <div id="atab-players">
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="playerSearch" placeholder="Поиск по нику или городу..." maxlength="40">
+        </div>
+        <div class="players-list" id="playersList"></div>
+      </div>
+
+      <div id="atab-tickets" class="hidden">
+        <div class="tickets-list" id="adminTicketsList"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LAUNCHER INSTALL MODAL ==================== -->
+<div class="modal" id="launcherModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="mh-icon mh-gold"><i class="fa-solid fa-download"></i></div>
+      <div class="mh-title">
+        <h3>Установка лаунчера</h3>
+        <span>Windows 10 / 11 · 64-bit</span>
+      </div>
+      <button class="modal-close" data-close="launcherModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <ol class="steps-list">
+        <li><div>Нажми <b>«Скачать установщик»</b> — загрузится файл <b>THETOWN-Setup-1.0.0.exe</b>.</div></li>
+        <li><div>Запусти файл и следуй подсказкам установщика. Можно выбрать папку установки и создать ярлык на рабочем столе.</div></li>
+        <li><div>Открой <b>THETOWN</b> с рабочего стола или из меню «Пуск».</div></li>
+        <li><div>Войди своим <b>ником и паролем с сайта THETOWN</b> — аккаунт синхронизируется автоматически.</div></li>
+        <li><div>Нажми <b>«Играть»</b>. Первый запуск скачает Java 17, Forge 1.20.1 и ресурсы игры — это может занять несколько минут.</div></li>
+      </ol>
+
+      <div class="warn-box">
+        <b>Windows SmartScreen.</b> Если система пишет «Windows защитила ваш компьютер», нажми
+        «Подробнее» → «Выполнить в любом случае». Это стандартное предупреждение для новых
+        установщиков без платной цифровой подписи.
+      </div>
+
+      <div class="warn-box" style="background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.3);color:#fde68a">
+        <b>Удаление.</b> Через «Установка и удаление программ» (или «Приложения» в Windows 11),
+        либо кнопкой <b>«Удалить»</b> в настройках лаунчера. Файлы игры в папке данных останутся,
+        если не удалить их вручную.
+      </div>
+
+      <button class="btn btn-gold btn-block" data-download style="margin-top:18px">
+        <i class="fa-solid fa-download"></i>Скачать установщик
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script>
+/* ============================================================
+   THETOWN — CLIENT LOGIC
+   Firebase Realtime Database via REST API (no proxy, clean paths)
+   ============================================================ */
+
+/* ---------------- CONFIG ---------------- */
+/* Прямое подключение к Firebase Realtime Database (без прокси, без query-параметров).
+   Основной адрес — как указано в конфигурации проекта. Если экземпляр базы размещён
+   в отдельном регионе (europe-west1 и т.п.), Firebase в ответе присылает поле
+   correctUrl — клиент автоматически переключается на него и запоминает адрес. */
+const DB_BASES = [
+  'https://thetown-6fbfa-default-rtdb.firebaseio.com',
+  'https://thetown-6fbfa-default-rtdb.europe-west1.firebasedatabase.app'
+];
+let dbBase = DB_BASES[0];
+try {
+  const cachedBase = localStorage.getItem('thetown_db_base');
+  if (cachedBase) dbBase = cachedBase;
+} catch (e) {}
+const SERVER_IP   = 'f1.rustix.me:35223';
+const DISCORD_URL = 'https://discord.gg/vrdNF4nHX';
+const VOICE_URL   = 'https://modrinth.com/plugin/simple-voice-chat';
+const YOUTUBE_URL = 'https://www.youtube.com/@Vunpos';
+const SESSION_KEY = 'thetown_session';
+
+const ADMINS = {
+  vunpos:     { nick: 'Vunpos',     role: 'Создатель сервера',           badge: 'badge-gold',   icon: 'fa-crown' },
+  mrlov3n4ik: { nick: 'MrLov3n4ik', role: 'Контент-креатор',             badge: 'badge-red',    icon: 'fa-video' },
+  sanraizzz:  { nick: 'Sanraizzz',  role: 'Администратор • Техподдержка', badge: 'badge-blue',   icon: 'fa-shield-halved' }
+};
+const ADMIN_KEYS = Object.keys(ADMINS);
+
+const STATUS_MAP = {
+  online:      { text: 'Сервер включен',  cls: 'st-online' },
+  maintenance: { text: 'На тех. работах', cls: 'st-maintenance' },
+  offline:     { text: 'Сервер выключен', cls: 'st-offline' }
+};
+
+/* ---------------- STATE ---------------- */
+const state = {
+  users: {},
+  tickets: {},
+  settings: {},
+  me: null,
+  lastSync: 0,
+  syncOk: false,
+  syncError: false,
+  adminTab: 'players',
+  playerSearch: ''
+};
+
+/* ---------------- UTILS ---------------- */
+const $  = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.prototype.slice.call((root || document).querySelectorAll(sel));
+
+function esc(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+function normKey(nick) {
+  return String(nick || '').trim().toLowerCase().replace(/[.#$\[\]\/\s]/g, '');
+}
+function cleanNick(nick) {
+  return String(nick || '').trim().replace(/[.#$\[\]\/]/g, '');
+}
+function hashPass(pass) {
+  let h = 5381;
+  const s = String(pass || '');
+  for (let i = 0; i < s.length; i++) { h = ((h << 5) + h) ^ s.charCodeAt(i); h = h >>> 0; }
+  let h2 = 52711;
+  for (let i = s.length - 1; i >= 0; i--) { h2 = ((h2 << 5) + h2) ^ s.charCodeAt(i); h2 = h2 >>> 0; }
+  return 'th' + h.toString(16) + h2.toString(16);
+}
+function isAdmin(key) { return !!key && ADMIN_KEYS.indexOf(key) !== -1; }
+function roleOf(key) { return isAdmin(key) ? ADMINS[key].role : 'Игрок THETOWN'; }
+function badgeOf(key) { return isAdmin(key) ? ADMINS[key].badge : 'badge-gray'; }
+function getUser(key) {
+  const u = key ? state.users[key] : null;
+  return (u && typeof u === 'object') ? u : null;
+}
+function displayNick(key) {
+  const u = getUser(key);
+  if (u) {
+    const n = u.nick || u.displayNick;
+    if (n) return n;
+  }
+  if (isAdmin(key)) return ADMINS[key].nick;
+  return key;
+}
+/* Совместимость со схемой существующей базы: city/town, createdAt/regDate, nick/displayNick */
+function userNick(u, key) {
+  if (u) { const n = u.nick || u.displayNick; if (n) return n; }
+  if (isAdmin(key)) return ADMINS[key].nick;
+  return key;
+}
+function userCity(u) {
+  if (!u) return '';
+  const c = (u.city !== undefined && u.city !== null && u.city !== '') ? u.city : (u.town || '');
+  return String(c || '');
+}
+function userCreated(u) {
+  if (!u) return 0;
+  return u.createdAt || u.regDate || 0;
+}
+function passMatches(stored, input) {
+  if (stored === undefined || stored === null || stored === '') return false;
+  const s = String(stored), i = String(input);
+  return s === i || s === hashPass(i);
+}
+function buildUserRecord(base, patch, key) {
+  const u = Object.assign({}, base || {}, patch || {});
+  const nick = u.nick || u.displayNick || (isAdmin(key) ? ADMINS[key].nick : key);
+  const city = userCity(u);
+  const created = userCreated(u) || Date.now();
+  return {
+    nick: nick,
+    displayNick: nick,
+    password: u.password || '',
+    city: city,
+    town: city,
+    createdAt: created,
+    regDate: (typeof created === 'string') ? created : formatDate(created),
+    banned: !!u.banned,
+    banReason: u.banReason || '',
+    bannedBy: u.bannedBy || '',
+    bannedAt: u.bannedAt || 0
+  };
+}
+function helmUrl(nick, size) {
+  return 'https://minotar.net/helm/' + encodeURIComponent(nick || 'Steve') + '/' + (size || 150) + '.png';
+}
+function formatDate(ts) {
+  if (ts === 0 || ts === '' || ts === null || ts === undefined) return 'Неизвестно';
+  // В существующей базе дата может храниться уже отформатированной строкой
+  if (typeof ts === 'string' && !/^\d+$/.test(ts.trim())) return ts;
+  const d = new Date(Number(ts));
+  if (isNaN(d.getTime())) return String(ts);
+  try {
+    return d.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+  } catch (e) {
+    return d.toLocaleDateString();
+  }
+}
+function formatDateTime(ts) {
+  if (!ts) return '';
+  if (typeof ts === 'string' && !/^\d+$/.test(ts.trim())) return ts;
+  const d = new Date(Number(ts));
+  if (isNaN(d.getTime())) return String(ts || '');
+  try {
+    return d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  } catch (e) { return ''; }
+}
+function sortTickets(list) {
+  return list.sort(function (a, b) { return (Number(b.createdAt) || 0) - (Number(a.createdAt) || 0); });
+}
+
+/* ---------------- TOASTS ---------------- */
+function toast(msg, type) {
+  type = type || 'info';
+  const icons = { success: 'fa-circle-check', error: 'fa-circle-exclamation', info: 'fa-circle-info' };
+  const el = document.createElement('div');
+  el.className = 'toast toast-' + type;
+  el.innerHTML = '<i class="fa-solid ' + icons[type] + '"></i><span>' + esc(msg) + '</span>';
+  const box = $('#toasts');
+  if (!box) return;
+  box.appendChild(el);
+  setTimeout(function () {
+    el.classList.add('out');
+    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 340);
+  }, 3400);
+}
+
+/* ---------------- FIREBASE REST (clean paths only) ---------------- */
+function rememberBase(url) {
+  if (!url) return;
+  const clean = String(url).replace(/\/+$/, '');
+  if (!clean || clean === dbBase) return;
+  dbBase = clean;
+  try { localStorage.setItem('thetown_db_base', clean); } catch (e) {}
+}
+
+async function dbRequest(method, path, value, attempt) {
+  attempt = attempt || 1;
+  const url = dbBase + '/' + (path ? path + '.json' : '.json');
+  const opts = { method: method, cache: 'no-store' };
+  if (value !== undefined) {
+    opts.headers = { 'Content-Type': 'application/json' };
+    opts.body = JSON.stringify(value);
+  }
+
+  const res = await fetch(url, opts);
+  const raw = await res.text();
+  let data = null;
+  try { data = raw ? JSON.parse(raw) : null; } catch (e) { data = null; }
+
+  if (!res.ok && data && data.correctUrl && attempt < 3) {
+    rememberBase(data.correctUrl);
+    return dbRequest(method, path, value, attempt + 1);
+  }
+  if (!res.ok) {
+    const message = (data && (data.error || data.message)) ? (data.error || data.message) : ('HTTP ' + res.status);
+    throw new Error(message);
+  }
+  return data;
+}
+
+function dbGetRoot()       { return dbRequest('GET', ''); }
+function dbGet(path)       { return dbRequest('GET', path); }
+function dbPut(path, v)    { return dbRequest('PUT', path, v); }
+function dbDelete(path)    { return dbRequest('DELETE', path); }
+
+/* ---------------- SYNC ---------------- */
+async function syncAllFromFirebase(silent) {
+  try {
+    const data = await dbGetRoot();
+    const root = (data && typeof data === 'object') ? data : {};
+    state.users    = (root.users && typeof root.users === 'object') ? root.users : {};
+    state.tickets  = (root.tickets && typeof root.tickets === 'object') ? root.tickets : {};
+    state.settings = (root.settings && typeof root.settings === 'object') ? root.settings : {};
+    state.lastSync = Date.now();
+    state.syncOk = true;
+    state.syncError = false;
+
+    // Если запись текущего пользователя исчезла из базы — разлогиниваем
+    if (state.me && !getUser(state.me)) {
+      state.me = null;
+      try { localStorage.removeItem(SESSION_KEY); } catch (e) {}
+    }
+    renderAll();
+    if (!silent) toast('База данных обновлена', 'success');
+  } catch (err) {
+    state.syncOk = false;
+    state.syncError = true;
+    renderStatus();
+    renderSyncBadge();
+    if (!silent) toast('Нет связи с базой данных: ' + err.message, 'error');
+  }
+}
+
+/* ---------------- RENDER: SERVER STATUS ---------------- */
+function renderStatus() {
+  const raw = state.settings && state.settings.serverStatus;
+  const key = STATUS_MAP[raw] ? raw : 'online';
+  const conf = STATUS_MAP[key];
+
+  const pill = $('#statusPill');
+  const text = $('#statusText');
+  if (pill) {
+    pill.className = 'status-pill ' + conf.cls;
+    if (text) text.textContent = conf.text;
+  }
+
+  $$('#statusSwitch button').forEach(function (b) {
+    b.classList.toggle('active', b.getAttribute('data-status') === key);
+  });
+}
+
+function renderSyncBadge() {
+  const dot = $('#syncDot');
+  const label = $('#lastSync');
+  if (dot) dot.classList.toggle('err', state.syncError);
+  if (label) {
+    label.textContent = state.lastSync
+      ? 'Синхронизация: ' + new Date(state.lastSync).toLocaleTimeString('ru-RU')
+      : 'Синхронизация: —';
+  }
+}
+
+/* ---------------- RENDER: HEADER ACCOUNT ---------------- */
+function renderHeaderAccount() {
+  const btn = $('#accountBtn');
+  const adminBtn = $('#adminBtn');
+  if (btn) {
+    if (state.me) {
+      const nick = displayNick(state.me);
+      btn.className = 'account-btn account-chip';
+      btn.innerHTML = '<img src="' + helmUrl(nick, 40) + '" alt="' + esc(nick) + '" onerror="this.style.opacity=.2"><span>' + esc(nick) + '</span>';
+    } else {
+      btn.className = 'account-btn';
+      btn.innerHTML = '<i class="fa-solid fa-user"></i><span>Аккаунт</span>';
+    }
+  }
+  if (adminBtn) adminBtn.classList.toggle('hidden', !isAdmin(state.me));
+}
+
+/* ---------------- RENDER: PROFILE ---------------- */
+function renderProfile() {
+  const authView = $('#authView');
+  const profileView = $('#profileView');
+  const sub = $('#accountModalSub');
+  if (!authView || !profileView) return;
+
+  if (!state.me) {
+    authView.classList.remove('hidden');
+    profileView.classList.add('hidden');
+    if (sub) sub.textContent = 'Вход и регистрация в THETOWN';
+    return;
+  }
+
+  authView.classList.add('hidden');
+  profileView.classList.remove('hidden');
+  if (sub) sub.textContent = 'Профиль игрока THETOWN';
+
+  const key = state.me;
+  const user = getUser(key) || {};
+  const nick = displayNick(key);
+  const banned = !!user.banned;
+
+  const skin = $('#pfSkin');
+  if (skin) skin.src = helmUrl(nick, 150);
+
+  $('#pfNick').textContent = nick;
+
+  const roleEl = $('#pfRole');
+  roleEl.className = 'badge ' + badgeOf(key);
+  roleEl.innerHTML = (isAdmin(key) ? '<i class="fa-solid ' + ADMINS[key].icon + '"></i>' : '<i class="fa-solid fa-cube"></i>') + esc(roleOf(key));
+
+  const st = $('#pfStatus');
+  if (banned) {
+    st.innerHTML = '<span style="color:#f87171"><i class="fa-solid fa-ban"></i> Заблокирован</span>';
+  } else {
+    st.innerHTML = '<span style="color:#34d399"><i class="fa-solid fa-circle-check"></i> Активен</span>';
+  }
+
+  $('#pfDate').textContent = formatDate(userCreated(user));
+
+  const banBlock = $('#banBlock');
+  if (banned) {
+    banBlock.classList.remove('hidden');
+    $('#banReason').textContent = user.banReason || 'Причина не указана';
+  } else {
+    banBlock.classList.add('hidden');
+  }
+
+  const cityInput = $('#cityInput');
+  if (cityInput) {
+    if (document.activeElement !== cityInput) cityInput.value = userCity(user);
+    cityInput.disabled = banned;
+  }
+  const saveBtn = $('#saveCityBtn');
+  if (saveBtn) saveBtn.disabled = banned;
+}
+
+/* ---------------- RENDER: TICKETS (PUBLIC) ---------------- */
+function ticketCardHtml(id, t) {
+  const nick = t.nick || 'Неизвестный';
+  let html = '<div class="ticket">';
+  html += '<div class="ticket-top">';
+  html += '<img class="avatar-sm" src="' + helmUrl(nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
+  html += '<div><div class="t-name">' + esc(nick) + '</div><div class="t-date">' + esc(formatDateTime(t.createdAt)) + '</div></div>';
+  html += '<span class="ticket-id">#' + esc(String(id).slice(-6)) + '</span>';
+  html += '</div>';
+  html += '<p class="ticket-msg">' + esc(t.message) + '</p>';
+
+  if (t.reply) {
+    html += '<div class="ticket-reply">';
+    html += '<div class="reply-head"><i class="fa-solid fa-shield-halved"></i> Ответ администрации • <b>' + esc(t.adminNick || 'Администратор') + '</b>';
+    if (t.repliedAt) html += '<span class="r-date">' + esc(formatDateTime(t.repliedAt)) + '</span>';
+    html += '</div>';
+    html += '<p>' + esc(t.reply) + '</p>';
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderTicketList() {
+  const box = $('#ticketList');
+  if (!box) return;
+  const ids = Object.keys(state.tickets).filter(function (id) {
+    return state.tickets[id] && typeof state.tickets[id] === 'object';
+  });
+  if (!ids.length) {
+    box.innerHTML = '<div class="empty"><i class="fa-regular fa-envelope-open"></i>Обращений пока нет. Стань первым — опиши проблему выше.</div>';
+    return;
+  }
+  const list = ids.map(function (id) { return Object.assign({ id: id }, state.tickets[id]); });
+  sortTickets(list);
+  box.innerHTML = list.map(function (t) { return ticketCardHtml(t.id, t); }).join('');
+}
+
+/* ---------------- RENDER: ADMIN ---------------- */
+function renderAdmin() {
+  const keys = Object.keys(state.users).filter(function (k) {
+    return state.users[k] && typeof state.users[k] === 'object';
+  });
+  const total = keys.length;
+  let banned = 0;
+  keys.forEach(function (k) { if (state.users[k].banned) banned++; });
+
+  const ticketCount = Object.keys(state.tickets).filter(function (id) {
+    return state.tickets[id] && typeof state.tickets[id] === 'object';
+  }).length;
+
+  if ($('#stTotal'))   $('#stTotal').textContent   = total;
+  if ($('#stActive'))  $('#stActive').textContent  = total - banned;
+  if ($('#stBanned'))  $('#stBanned').textContent  = banned;
+  if ($('#stTickets')) $('#stTickets').textContent = ticketCount;
+
+  renderSyncBadge();
+  renderStatus();
+  renderPlayers();
+  renderAdminTickets();
+}
+
+function renderPlayers() {
+  const box = $('#playersList');
+  if (!box) return;
+
+  let keys = Object.keys(state.users).filter(function (k) {
+    return state.users[k] && typeof state.users[k] === 'object';
+  });
+  keys.sort(function (a, b) {
+    const ua = state.users[a], ub = state.users[b];
+    const ta = Number(userCreated(ua)) || 0;
+    const tb = Number(userCreated(ub)) || 0;
+    return tb - ta;
+  });
+
+  const q = state.playerSearch.trim().toLowerCase();
+  if (q) {
+    keys = keys.filter(function (k) {
+      const u = state.users[k];
+      const nick = String(userNick(u, k)).toLowerCase();
+      const city = userCity(u).toLowerCase();
+      return nick.indexOf(q) !== -1 || city.indexOf(q) !== -1;
+    });
+  }
+
+  if (!keys.length) {
+    box.innerHTML = '<div class="empty"><i class="fa-solid fa-user-slash"></i>' + (q ? 'Игроки не найдены' : 'Пока нет зарегистрированных игроков') + '</div>';
+    return;
+  }
+
+  box.innerHTML = keys.map(function (k) {
+    const u = state.users[k];
+    const nick = userNick(u, k);
+    const admin = isAdmin(k);
+    const banned = !!u.banned;
+    let html = '<div class="prow">';
+    html += '<img src="' + helmUrl(nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
+    html += '<div class="pinfo">';
+    html += '<div class="pnick">' + esc(nick);
+    html += admin
+      ? '<span class="badge ' + ADMINS[k].badge + '"><i class="fa-solid ' + ADMINS[k].icon + '"></i>' + esc(ADMINS[k].role) + '</span>'
+      : '<span class="badge badge-gray">Игрок</span>';
+    if (banned) html += '<span class="badge badge-red"><i class="fa-solid fa-ban"></i>Бан</span>';
+    html += '</div>';
+    html += '<div class="pmeta"><i class="fa-solid fa-city"></i>' + esc(userCity(u) || 'Город не указан') + ' <span>•</span> <i class="fa-regular fa-calendar"></i>' + esc(formatDate(userCreated(u))) + '</div>';
+    if (banned && u.banReason) html += '<div class="pmeta" style="font-size:11px;color:#f87171;margin-top:3px"><i class="fa-solid fa-circle-exclamation"></i> ' + esc(u.banReason) + '</div>';
+    html += '</div>';
+    html += '<div class="pactions">';
+    if (banned) {
+      html += '<button class="mini mini-green" data-act="unban" data-key="' + esc(k) + '">Разбанить</button>';
+    } else {
+      html += '<button class="mini mini-red" data-act="ban" data-key="' + esc(k) + '"' + (admin ? ' disabled title="Нельзя забанить администратора"' : '') + '>Забанить</button>';
+    }
+    html += '<button class="mini mini-del" data-act="del" data-key="' + esc(k) + '"' + (admin ? ' disabled title="Нельзя удалить администратора"' : '') + '>Удалить</button>';
+    html += '</div>';
+    html += '</div>';
+    return html;
+  }).join('');
+}
+
+function renderAdminTickets() {
+  const box = $('#adminTicketsList');
+  if (!box) return;
+  const ids = Object.keys(state.tickets).filter(function (id) {
+    return state.tickets[id] && typeof state.tickets[id] === 'object';
+  });
+  if (!ids.length) {
+    box.innerHTML = '<div class="empty"><i class="fa-regular fa-envelope-open"></i>Обращений в техподдержку пока нет</div>';
+    return;
+  }
+  const list = ids.map(function (id) { return Object.assign({ id: id }, state.tickets[id]); });
+  sortTickets(list);
+
+  box.innerHTML = list.map(function (t) {
+    let html = ticketCardHtml(t.id, t);
+    // добавляем кнопки управления внутрь карточки тикета
+    let foot = '<div class="ticket-foot">';
+    foot += '<button class="mini mini-blue" data-ticket-reply="' + esc(t.id) + '">' + (t.reply ? 'Изменить ответ' : 'Ответить') + '</button>';
+    foot += '<button class="mini mini-del" data-ticket-del="' + esc(t.id) + '">Удалить тикет</button>';
+    foot += '</div>';
+    if (!t.reply) {
+      foot = '<div class="admin-reply-pending"><i class="fa-regular fa-clock"></i>Ожидает ответа администрации</div>' + foot;
+    }
+    return html.replace(/<\/div>$/, foot + '</div>');
+  }).join('');
+}
+
+function renderAll() {
+  renderStatus();
+  renderHeaderAccount();
+  renderProfile();
+  renderTicketList();
+  if ($('#adminModal') && $('#adminModal').classList.contains('open')) renderAdmin();
+}
+
+/* ---------------- MODAL HELPERS ---------------- */
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.remove('open');
+  if (!$('.modal.open')) document.body.style.overflow = '';
+}
+function closeAllModals() {
+  $$('.modal.open').forEach(function (m) { m.classList.remove('open'); });
+  document.body.style.overflow = '';
+}
+
+/* ---------------- AUTH ---------------- */
+function setSession(key) {
+  state.me = key;
+  try { localStorage.setItem(SESSION_KEY, key); } catch (e) {}
+  renderAll();
+}
+
+function showFormError(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (!msg) { el.classList.add('hidden'); el.textContent = ''; return; }
+  el.classList.remove('hidden');
+  el.textContent = msg;
+}
+
+function setBtnLoading(btn, loading, text) {
+  if (!btn) return;
+  if (loading) {
+    btn.dataset.original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>' + (text || 'Подождите...');
+  } else {
+    btn.disabled = false;
+    if (btn.dataset.original) btn.innerHTML = btn.dataset.original;
+  }
+}
+
+async function doLogin(nick, pass) {
+  const key = normKey(nick);
+  if (!key) throw new Error('Введи никнейм');
+  if (!pass) throw new Error('Введи пароль');
+
+  let user = await dbGet('users/' + key);
+
+  if (!user || typeof user !== 'object') {
+    // Администрация имеет доступ без предварительной регистрации
+    if (isAdmin(key)) {
+      user = buildUserRecord(null, {
+        nick: ADMINS[key].nick,
+        password: pass,
+        city: '',
+        createdAt: Date.now(),
+        banned: false,
+        banReason: ''
+      }, key);
+      await dbPut('users/' + key, user);
+    } else {
+      throw new Error('Аккаунт с таким ником не найден. Зарегистрируйся.');
+    }
+  } else if (!passMatches(user.password, pass)) {
+    throw new Error('Неверный пароль');
+  }
+
+  state.users[key] = user;
+  setSession(key);
+  syncAllFromFirebase(true);
+  return user;
+}
+
+async function doRegister(nick, pass, pass2) {
+  const clean = cleanNick(nick);
+  const key = normKey(nick);
+  if (!/^[A-Za-z0-9_]{3,16}$/.test(clean)) throw new Error('Ник: 3–16 символов, латиница, цифры и _');
+  if (!pass || pass.length < 4) throw new Error('Пароль должен быть не короче 4 символов');
+  if (pass !== pass2) throw new Error('Пароли не совпадают');
+
+  const exists = await dbGet('users/' + key);
+  if (exists && typeof exists === 'object') throw new Error('Этот ник уже зарегистрирован');
+
+  const user = buildUserRecord(null, {
+    nick: isAdmin(key) ? ADMINS[key].nick : clean,
+    password: pass,
+    city: '',
+    createdAt: Date.now(),
+    banned: false,
+    banReason: ''
+  }, key);
+  await dbPut('users/' + key, user);
+  state.users[key] = user;
+  setSession(key);
+  syncAllFromFirebase(true);
+  return user;
+}
+
+async function saveCity() {
+  if (!state.me) return;
+  const user = getUser(state.me);
+  if (!user) { toast('Аккаунт не найден', 'error'); return; }
+  if (user.banned) { toast('Аккаунт заблокирован — редактирование недоступно', 'error'); return; }
+  const input = $('#cityInput');
+  const city = input ? input.value.trim() : '';
+  const btn = $('#saveCityBtn');
+  setBtnLoading(btn, true, 'Сохраняем...');
+  try {
+    const upd = buildUserRecord(user, { city: city, town: city }, state.me);
+    await dbPut('users/' + state.me, upd);
+    state.users[state.me] = upd;
+    renderAll();
+    toast('Город сохранён: ' + (city || 'не указан'), 'success');
+  } catch (err) {
+    toast('Ошибка сохранения: ' + err.message, 'error');
+  } finally {
+    setBtnLoading(btn, false);
+  }
+}
+
+function logout() {
+  state.me = null;
+  try { localStorage.removeItem(SESSION_KEY); } catch (e) {}
+  const cityInput = $('#cityInput');
+  if (cityInput) cityInput.value = '';
+  renderAll();
+  toast('Вы вышли из аккаунта', 'info');
+}
+
+/* ---------------- TICKETS ---------------- */
+async function submitTicket(nick, message) {
+  const clean = cleanNick(nick);
+  const msg = String(message || '').trim();
+  if (clean.length < 3) throw new Error('Укажи никнейм в Minecraft');
+  if (msg.length < 10) throw new Error('Опиши проблему подробнее (минимум 10 символов)');
+
+  const id = 'tk' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const ticket = {
+    nick: clean,
+    message: msg,
+    createdAt: Date.now(),
+    reply: '',
+    adminNick: '',
+    repliedAt: 0
+  };
+  await dbPut('tickets/' + id, ticket);
+  state.tickets[id] = ticket;
+  renderTicketList();
+  if ($('#adminModal').classList.contains('open')) renderAdmin();
+  return id;
+}
+
+async function replyTicket(id) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  const t = state.tickets[id];
+  if (!t) return;
+  const answer = prompt('Ответ для игрока ' + (t.nick || '') + ':', t.reply || '');
+  if (answer === null) return;
+  if (!String(answer).trim()) { toast('Ответ не может быть пустым', 'error'); return; }
+  try {
+    const upd = Object.assign({}, t, {
+      reply: String(answer).trim(),
+      adminNick: ADMINS[state.me].nick,
+      repliedAt: Date.now()
+    });
+    await dbPut('tickets/' + id, upd);
+    state.tickets[id] = upd;
+    renderAll();
+    if ($('#adminModal').classList.contains('open')) renderAdmin();
+    toast('Ответ отправлен', 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+async function deleteTicket(id) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  const t = state.tickets[id];
+  if (!t) return;
+  if (!confirm('Удалить тикет от ' + (t.nick || 'игрока') + '? Действие необратимо.')) return;
+  try {
+    await dbDelete('tickets/' + id);
+    delete state.tickets[id];
+    renderAll();
+    if ($('#adminModal').classList.contains('open')) renderAdmin();
+    toast('Тикет удалён', 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+/* ---------------- ADMIN ACTIONS ---------------- */
+async function banPlayer(key) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  if (isAdmin(key)) { toast('Нельзя забанить администратора', 'error'); return; }
+  const u = getUser(key);
+  if (!u) return;
+  const reason = prompt('Причина блокировки аккаунта ' + displayNick(key) + ':', 'Нарушение правил сервера');
+  if (reason === null) return;
+  try {
+    const upd = buildUserRecord(u, {
+      banned: true,
+      banReason: String(reason).trim() || 'Причина не указана',
+      bannedBy: ADMINS[state.me].nick,
+      bannedAt: Date.now()
+    }, key);
+    await dbPut('users/' + key, upd);
+    state.users[key] = upd;
+    renderAll();
+    if ($('#adminModal').classList.contains('open')) renderAdmin();
+    toast('Игрок ' + displayNick(key) + ' заблокирован', 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+async function unbanPlayer(key) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  const u = getUser(key);
+  if (!u) return;
+  try {
+    const upd = buildUserRecord(u, { banned: false, banReason: '', bannedBy: '', bannedAt: 0 }, key);
+    await dbPut('users/' + key, upd);
+    state.users[key] = upd;
+    renderAll();
+    if ($('#adminModal').classList.contains('open')) renderAdmin();
+    toast('Игрок ' + displayNick(key) + ' разблокирован', 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+async function deletePlayer(key) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  if (isAdmin(key)) { toast('Нельзя удалить аккаунт администратора', 'error'); return; }
+  const u = getUser(key);
+  if (!u) return;
+  if (!confirm('Удалить аккаунт ' + displayNick(key) + '? Действие необратимо.')) return;
+  try {
+    await dbDelete('users/' + key);
+    delete state.users[key];
+    renderAll();
+    if ($('#adminModal').classList.contains('open')) renderAdmin();
+    toast('Аккаунт удалён', 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+async function setServerStatus(status) {
+  if (!isAdmin(state.me)) { toast('Недостаточно прав', 'error'); return; }
+  if (!STATUS_MAP[status]) return;
+  try {
+    await dbPut('settings/serverStatus', status);
+    state.settings = state.settings || {};
+    state.settings.serverStatus = status;
+    renderStatus();
+    toast('Статус сервера: ' + STATUS_MAP[status].text, 'success');
+  } catch (err) {
+    toast('Ошибка: ' + err.message, 'error');
+  }
+}
+
+function openAdminPanel() {
+  if (!isAdmin(state.me)) { toast('Доступ только для администрации', 'error'); return; }
+  openModal('adminModal');
+  renderAdmin();
+  syncAllFromFirebase(true);
+}
+
+/* ---------------- LAUNCHER DOWNLOAD ----------------
+   Откуда сайт берёт установщик (проверяется по порядку):
+   1) LAUNCHER_RELEASE_URL — прямая ссылка, например с GitHub Releases:
+      'https://github.com/ТВОЙ_НИК/ТВОЙ_РЕПО/releases/latest/download/THETOWN-Setup-1.0.0.exe'
+   2) LAUNCHER_FILE — файл, лежащий рядом с index.html в папке downloads/
+   Если есть и то и другое — приоритет у ссылки Releases. */
+const LAUNCHER_FILE = 'downloads/THETOWN-Setup-1.0.0.exe';
+const LAUNCHER_RELEASE_URL = '';
+
+let launcherUrlCache;
+async function findLauncherUrl() {
+  if (launcherUrlCache !== undefined) return launcherUrlCache;
+  const candidates = [LAUNCHER_RELEASE_URL, LAUNCHER_FILE].filter(Boolean);
+  for (let i = 0; i < candidates.length; i++) {
+    try {
+      const res = await fetch(candidates[i], { method: 'HEAD', cache: 'no-store' });
+      if (res.ok) { launcherUrlCache = candidates[i]; return launcherUrlCache; }
+    } catch (e) { /* пробуем следующий адрес */ }
+  }
+  launcherUrlCache = null;
+  return null;
+}
+
+async function downloadLauncher() {
+  const url = await findLauncherUrl();
+  if (!url) {
+    toast('Установщик ещё не загружен. Положи ' + LAUNCHER_FILE + ' или укажи LAUNCHER_RELEASE_URL', 'error');
+    openModal('launcherModal');
+    return;
+  }
+  toast('Начинаем загрузку установщика...', 'success');
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'THETOWN-Setup-1.0.0.exe';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+/* ---------------- COPY IP ---------------- */
+function copyIP() {
+  const done = function () { toast('IP скопирован: ' + SERVER_IP, 'success'); };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(SERVER_IP).then(done).catch(fallbackCopy);
+  } else {
+    fallbackCopy();
+  }
+}
+function fallbackCopy() {
+  const ta = document.createElement('textarea');
+  ta.value = SERVER_IP;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.top = '-1000px';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    toast('IP скопирован: ' + SERVER_IP, 'success');
+  } catch (e) {
+    toast('Не удалось скопировать. IP: ' + SERVER_IP, 'error');
+  }
+  document.body.removeChild(ta);
+}
+
+/* ---------------- EVENTS ---------------- */
+function bindEvents() {
+  /* copy IP */
+  document.addEventListener('click', function (e) {
+    const t = e.target.closest('[data-copy-ip]');
+    if (t) { e.preventDefault(); copyIP(); }
+  });
+
+  /* скачивание лаунчера */
+  document.addEventListener('click', function (e) {
+    const t = e.target.closest('[data-download]');
+    if (t) { e.preventDefault(); downloadLauncher(); }
+  });
+  ['howInstallBtn', 'howInstallBtn2'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', function () { openModal('launcherModal'); });
+  });
+
+  /* header scroll */
+  const header = $('#header');
+  window.addEventListener('scroll', function () {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 24);
+  }, { passive: true });
+
+  /* burger */
+  const burger = $('#burger');
+  const mobileMenu = $('#mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', function () {
+      mobileMenu.classList.toggle('open');
+      burger.innerHTML = mobileMenu.classList.contains('open')
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+    $$('a', mobileMenu).forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+  }
+
+  /* account */
+  const accountBtn = $('#accountBtn');
+  if (accountBtn) accountBtn.addEventListener('click', function () { openModal('accountModal'); renderProfile(); });
+  const footerAccountBtn = $('#footerAccountBtn');
+  if (footerAccountBtn) footerAccountBtn.addEventListener('click', function () { openModal('accountModal'); renderProfile(); });
+
+  /* admin */
+  const adminBtn = $('#adminBtn');
+  if (adminBtn) adminBtn.addEventListener('click', openAdminPanel);
+
+  /* support modals */
+  ['supportBtn', 'heroSupportBtn', 'footerSupportBtn'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', function () {
+      openModal('supportModal');
+      const nickInput = $('#ticketNick');
+      if (nickInput && !nickInput.value && state.me) nickInput.value = displayNick(state.me);
+      renderTicketList();
+    });
+  });
+
+  /* close buttons */
+  $$('[data-close]').forEach(function (b) {
+    b.addEventListener('click', function () { closeModal(b.getAttribute('data-close')); });
+  });
+  $$('.modal').forEach(function (m) {
+    m.addEventListener('mousedown', function (e) {
+      if (e.target === m) closeModal(m.id);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAllModals();
+  });
+
+  /* auth tabs */
+  $$('.tabs .tab[data-tab]').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      $$('.tabs .tab[data-tab]').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      const isLogin = tab.getAttribute('data-tab') === 'login';
+      $('#loginForm').classList.toggle('hidden', !isLogin);
+      $('#registerForm').classList.toggle('hidden', isLogin);
+      showFormError('loginError', '');
+      showFormError('registerError', '');
+    });
+  });
+
+  /* login submit */
+  const loginForm = $('#loginForm');
+  if (loginForm) loginForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    showFormError('loginError', '');
+    const btn = $('#loginSubmit');
+    const nick = $('#loginNick').value;
+    const pass = $('#loginPass').value;
+    setBtnLoading(btn, true, 'Входим...');
+    try {
+      await doLogin(nick, pass);
+      $('#loginPass').value = '';
+      toast('Добро пожаловать, ' + displayNick(state.me) + '!', 'success');
+      renderProfile();
+    } catch (err) {
+      showFormError('loginError', err.message || 'Ошибка входа');
+    } finally {
+      setBtnLoading(btn, false);
+    }
+  });
+
+  /* register submit */
+  const registerForm = $('#registerForm');
+  if (registerForm) registerForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    showFormError('registerError', '');
+    const btn = $('#regSubmit');
+    const nick = $('#regNick').value;
+    const pass = $('#regPass').value;
+    const pass2 = $('#regPass2').value;
+    setBtnLoading(btn, true, 'Создаём...');
+    try {
+      await doRegister(nick, pass, pass2);
+      $('#regPass').value = '';
+      $('#regPass2').value = '';
+      toast('Аккаунт создан. Добро пожаловать в THETOWN!', 'success');
+      renderProfile();
+    } catch (err) {
+      showFormError('registerError', err.message || 'Ошибка регистрации');
+    } finally {
+      setBtnLoading(btn, false);
+    }
+  });
+
+  /* city save / logout */
+  const saveCityBtn = $('#saveCityBtn');
+  if (saveCityBtn) saveCityBtn.addEventListener('click', saveCity);
+  const cityInput = $('#cityInput');
+  if (cityInput) cityInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); saveCity(); }
+  });
+  const logoutBtn = $('#logoutBtn');
+  if (logoutBtn) logoutBtn.addEventListener('click', logout);
+
+  /* ticket form */
+  const ticketForm = $('#ticketForm');
+  if (ticketForm) ticketForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    showFormError('ticketError', '');
+    const btn = $('#ticketSubmit');
+    const nick = $('#ticketNick').value;
+    const msg = $('#ticketMsg').value;
+    setBtnLoading(btn, true, 'Отправляем...');
+    try {
+      await submitTicket(nick, msg);
+      $('#ticketMsg').value = '';
+      toast('Обращение отправлено в техподдержку', 'success');
+    } catch (err) {
+      showFormError('ticketError', err.message || 'Ошибка отправки');
+    } finally {
+      setBtnLoading(btn, false);
+    }
+  });
+
+  /* admin refresh */
+  const refreshDbBtn = $('#refreshDbBtn');
+  if (refreshDbBtn) refreshDbBtn.addEventListener('click', async function () {
+    setBtnLoading(refreshDbBtn, true, 'Обновляем...');
+    await syncAllFromFirebase(false);
+    setBtnLoading(refreshDbBtn, false);
+    renderAdmin();
+  });
+
+  /* admin status switch */
+  $$('#statusSwitch button').forEach(function (b) {
+    b.addEventListener('click', function () { setServerStatus(b.getAttribute('data-status')); });
+  });
+
+  /* admin tabs */
+  $$('.tab[data-atab]').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      $$('.tab[data-atab]').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      const isPlayers = tab.getAttribute('data-atab') === 'players';
+      $('#atab-players').classList.toggle('hidden', !isPlayers);
+      $('#atab-tickets').classList.toggle('hidden', isPlayers);
+    });
+  });
+
+  /* player search */
+  const playerSearch = $('#playerSearch');
+  if (playerSearch) playerSearch.addEventListener('input', function () {
+    state.playerSearch = playerSearch.value;
+    renderPlayers();
+  });
+
+  /* players list actions */
+  const playersList = $('#playersList');
+  if (playersList) playersList.addEventListener('click', function (e) {
+    const btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    const key = btn.getAttribute('data-key');
+    const act = btn.getAttribute('data-act');
+    if (act === 'ban') banPlayer(key);
+    else if (act === 'unban') unbanPlayer(key);
+    else if (act === 'del') deletePlayer(key);
+  });
+
+  /* admin tickets actions */
+  const adminTicketsList = $('#adminTicketsList');
+  if (adminTicketsList) adminTicketsList.addEventListener('click', function (e) {
+    const rep = e.target.closest('[data-ticket-reply]');
+    if (rep) { replyTicket(rep.getAttribute('data-ticket-reply')); return; }
+    const del = e.target.closest('[data-ticket-del]');
+    if (del) { deleteTicket(del.getAttribute('data-ticket-del')); }
+  });
+
+  /* reveal on scroll */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal').forEach(function (el, i) {
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    $$('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* страховка: контент не должен оставаться скрытым ни при каких условиях */
+  setTimeout(function () {
+    $$('.reveal:not(.in)').forEach(function (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 200) el.classList.add('in');
+    });
+  }, 2600);
+}
+
+/* ---------------- INIT ---------------- */
+function init() {
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  try { state.me = localStorage.getItem(SESSION_KEY) || null; } catch (e) { state.me = null; }
+
+  bindEvents();
+  renderAll();
+  renderTicketList();
+  syncAllFromFirebase(true);
+
+  // Автоматическая фоновая синхронизация каждые 4 секунды
+  setInterval(function () { syncAllFromFirebase(true); }, 4000);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+</script>
+</body>
+</html>
