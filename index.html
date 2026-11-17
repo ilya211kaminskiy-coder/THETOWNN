@@ -660,26 +660,26 @@ section{padding:88px 0;position:relative}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ============================================================
-   LAUNCHER
+   CONNECTION
    ============================================================ */
-.launcher-banner{
+.connect-banner{
   position:relative;border-radius:26px;padding:38px 40px;overflow:hidden;
   background:linear-gradient(120deg, rgba(245,158,11,.16), rgba(56,189,248,.08) 55%, rgba(15,19,32,.65) 88%), #101420;
   border:1px solid rgba(245,158,11,.34);
   display:flex;align-items:center;gap:34px;flex-wrap:wrap;
   box-shadow:0 30px 80px -50px rgba(245,158,11,.9);
 }
-.launcher-banner::after{
+.connect-banner::after{
   content:'';position:absolute;right:-100px;top:-120px;width:360px;height:360px;border-radius:50%;
   background:radial-gradient(circle, rgba(245,158,11,.22), transparent 68%);pointer-events:none;
 }
-.launcher-banner .voice-icon{
+.connect-banner .voice-icon{
   background:linear-gradient(140deg, rgba(245,158,11,.28), rgba(245,158,11,.08));
   border-color:rgba(245,158,11,.5);color:#fcd34d;
   box-shadow:0 16px 40px -22px rgba(245,158,11,.9);
 }
-.launcher-banner .voice-tag{color:#fcd34d;background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.42)}
-.launcher-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;margin-top:22px}
+.connect-banner .voice-tag{color:#fcd34d;background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.42)}
+.connect-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;margin-top:22px}
 .dl-card{padding:32px;display:flex;flex-direction:column}
 .dl-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .dl-mark{
@@ -726,8 +726,8 @@ section{padding:88px 0;position:relative}
 }
 .warn-box b{color:#fff}
 @media (max-width:900px){
-  .launcher-grid{grid-template-columns:1fr}
-  .launcher-banner{padding:30px 26px;gap:22px}
+  .connect-grid{grid-template-columns:1fr}
+  .connect-banner{padding:30px 26px;gap:22px}
 }
 
 /* REVEAL */
@@ -792,7 +792,6 @@ section{padding:88px 0;position:relative}
 
     <nav class="nav">
       <a href="#about">О сервере</a>
-      <a href="#launcher">Лаунчер</a>
       <a href="#start">Как начать</a>
       <a href="#media">Медиа</a>
       <a href="#team">Руководство</a>
@@ -802,9 +801,6 @@ section{padding:88px 0;position:relative}
     <div class="header-actions">
       <button class="admin-btn hidden" id="adminBtn" title="Админ-панель">
         <i class="fa-solid fa-user-shield"></i><span>Админ-панель</span>
-      </button>
-      <button class="btn btn-gold btn-sm header-launcher" data-download title="Скачать лаунчер THETOWN">
-        <i class="fa-solid fa-download"></i><span>Скачать лаунчер</span>
       </button>
       <button class="header-ip" data-copy-ip title="Скопировать IP сервера">
         <i class="fa-solid fa-copy"></i>f1.rustix.me:35223
@@ -819,13 +815,11 @@ section{padding:88px 0;position:relative}
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about">О сервере</a>
-  <a href="#launcher">Лаунчер</a>
   <a href="#start">Как начать</a>
   <a href="#media">Медиа</a>
   <a href="#team">Руководство</a>
   <a href="#support">Поддержка</a>
-  <button class="btn btn-gold btn-block" data-download><i class="fa-solid fa-download"></i>Скачать лаунчер</button>
-  <button class="btn btn-ghost btn-block" data-copy-ip><i class="fa-solid fa-copy"></i>Скопировать IP</button>
+  <button class="btn btn-gold btn-block" data-copy-ip><i class="fa-solid fa-copy"></i>Скопировать IP</button>
 </div>
 
 <div class="wrap" id="top">
@@ -853,10 +847,7 @@ section{padding:88px 0;position:relative}
       </p>
 
       <div class="hero-actions">
-        <button class="btn btn-gold" data-download>
-          <i class="fa-solid fa-download"></i>Скачать лаунчер
-        </button>
-        <button class="btn btn-ghost" data-copy-ip>
+        <button class="btn btn-gold" data-copy-ip>
           <i class="fa-solid fa-copy"></i>IP: f1.rustix.me:35223
         </button>
         <a class="btn btn-discord" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
@@ -869,7 +860,7 @@ section{padding:88px 0;position:relative}
 
       <div class="hero-meta">
         <span><i class="fa-solid fa-cubes"></i>Java Edition</span>
-        <span><i class="fa-solid fa-microphone-lines"></i>Voice Chat в лаунчере</span>
+        <span><i class="fa-solid fa-microphone-lines"></i>Голосовой чат (мод)</span>
         <span><i class="fa-solid fa-globe"></i>Карта Земли</span>
         <span><i class="fa-solid fa-flag"></i>Города и Империи</span>
       </div>
@@ -905,144 +896,41 @@ section{padding:88px 0;position:relative}
     </div>
   </section>
 
-  <!-- ==================== LAUNCHER ==================== -->
-  <section id="launcher" style="padding-top:0">
-    <div class="container">
-      <div class="launcher-banner reveal">
-        <div class="voice-icon"><i class="fa-solid fa-rocket"></i></div>
-        <div class="voice-body">
-          <div class="voice-tag"><i class="fa-solid fa-star"></i>Официальный лаунчер</div>
-          <h3>Лаунчер THETOWN — всё готово к игре</h3>
-          <p>Ничего не нужно устанавливать вручную: лаунчер сам скачает <b>Java 17</b>, <b>Minecraft 1.20.1</b>, <b>Forge</b>, обязательный мод <b>Simple Voice Chat</b> и кастомное меню THETOWN. Вход — твоим аккаунтом с сайта.</p>
-        </div>
-        <div class="voice-actions">
-          <button class="btn btn-gold" data-download>
-            <i class="fa-solid fa-download"></i>Скачать установщик
-          </button>
-          <button class="btn btn-ghost" id="howInstallBtn">
-            <i class="fa-solid fa-circle-info"></i>Как установить
-          </button>
-        </div>
-      </div>
-
-      <div class="launcher-grid">
-        <div class="card dl-card reveal">
-          <div class="dl-head">
-            <div class="dl-mark">T</div>
-            <div>
-              <h3>THETOWN Launcher</h3>
-              <span>Windows 10 / 11 · 64-bit</span>
-            </div>
-          </div>
-
-          <div class="dl-chips">
-            <span class="dl-chip gold">Версия 1.0.0</span>
-            <span class="dl-chip">Minecraft 1.20.1</span>
-            <span class="dl-chip">Forge 47.4.28</span>
-            <span class="dl-chip green">Voice Chat внутри</span>
-            <span class="dl-chip">~77 МБ</span>
-          </div>
-
-          <div class="dl-actions">
-            <button class="btn btn-gold" data-download>
-              <i class="fa-solid fa-download"></i>Скачать THETOWN-Setup.exe
-            </button>
-            <button class="btn btn-ghost" id="howInstallBtn2">
-              <i class="fa-solid fa-question"></i>Инструкция
-            </button>
-          </div>
-
-          <div class="dl-req">
-            <div class="dl-req-row"><i class="fa-brands fa-windows"></i><span>Windows 10 / 11 · 64-bit</span></div>
-            <div class="dl-req-row"><i class="fa-solid fa-memory"></i><span>4 ГБ ОЗУ (рекомендуется 6 ГБ)</span></div>
-            <div class="dl-req-row"><i class="fa-solid fa-hard-drive"></i><span>~2 ГБ свободного места</span></div>
-            <div class="dl-req-row"><i class="fa-solid fa-user-check"></i><span>Аккаунт THETOWN с сайта</span></div>
-          </div>
-
-          <div class="dl-note">
-            Установщик создаёт ярлык на рабочем столе и запись в «Установка и удаление программ».
-            <b>Удаление</b> — через панель Windows или кнопкой «Удалить» в настройках лаунчера.
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3 style="font-size:17px;font-weight:900;margin-bottom:18px;letter-spacing:-.01em">Что внутри лаунчера</h3>
-
-          <div class="feature-row">
-            <div class="feature-ic"><i class="fa-brands fa-java"></i></div>
-            <div>
-              <h4>Java 17 автоматом</h4>
-              <p>Если Java не найдена в системе — лаунчер скачает и установит её сам.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <div class="feature-ic"><i class="fa-solid fa-cube"></i></div>
-            <div>
-              <h4>Forge 1.20.1 под ключ</h4>
-              <p>Нужная версия Forge, библиотеки и ресурсы игры скачиваются при первом запуске.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <div class="feature-ic"><i class="fa-solid fa-microphone-lines"></i></div>
-            <div>
-              <h4>Simple Voice Chat уже стоит</h4>
-              <p>Мод обновляется автоматически — вручную ничего качать не нужно.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <div class="feature-ic"><i class="fa-solid fa-image"></i></div>
-            <div>
-              <h4>Кастомное меню THETOWN</h4>
-              <p>Фирменная панорама ночного города на главном экране Minecraft.</p>
-            </div>
-          </div>
-          <div class="feature-row">
-            <div class="feature-ic"><i class="fa-solid fa-arrows-rotate"></i></div>
-            <div>
-              <h4>Синхронизация аккаунта</h4>
-              <p>Один ник и пароль с сайтом: роль, город и статус подтягиваются в лаунчер.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ==================== HOW TO START ==================== -->
   <section id="start">
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">Как начать играть</div>
         <h2>Три шага до <em>первого города</em></h2>
-        <p>Установка лаунчера и первый вход занимают пару минут. Дальше — только кнопка «Играть».</p>
+        <p>Обычный Minecraft, один мод и адрес сервера.</p>
       </div>
 
       <div class="steps">
         <div class="step reveal">
           <div class="step-num">01</div>
           <div class="card">
-            <h3><i class="fa-solid fa-download"></i>Установи лаунчер</h3>
-            <p>Скачай <b>THETOWN-Setup.exe</b>, запусти установщик и следуй подсказкам. Лаунчер сам скачает Java, Forge 1.20.1 и мод Simple Voice Chat.</p>
-            <button class="step-link" data-download style="background:none;border:none;padding:0">
-              Скачать лаунчер <i class="fa-solid fa-arrow-right"></i>
-            </button>
+            <h3><i class="fa-solid fa-screwdriver-wrench"></i>Поставь Forge</h3>
+            <p>Запусти <b>Minecraft Java Edition 1.20.1</b> и установи <b>Forge 47.4.28</b> — без него не заработает голосовой чат.</p>
+            <a class="step-link" href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html" target="_blank" rel="noopener">
+              Страница Forge 1.20.1 <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
         <div class="step reveal">
           <div class="step-num">02</div>
           <div class="card">
-            <h3><i class="fa-solid fa-user-check"></i>Войди в аккаунт</h3>
-            <p>В лаунчере введи тот же ник и пароль, что и на сайте THETOWN — аккаунт синхронизируется, а игра запустится под твоим ником.</p>
-            <a class="step-link" href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">
-              Нет аккаунта? Discord <i class="fa-solid fa-arrow-right"></i>
+            <h3><i class="fa-solid fa-microphone-lines"></i>Добавь мод голосового чата</h3>
+            <p>Скачай <b>Simple Voice Chat</b> для Forge 1.20.1 и положи файл в папку <b>mods</b>. Заходи в игру под своим ником.</p>
+            <a class="step-link" href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener">
+              Скачать Simple Voice Chat <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
         </div>
         <div class="step reveal">
           <div class="step-num">03</div>
           <div class="card">
-            <h3><i class="fa-solid fa-play"></i>Нажми «Играть»</h3>
-            <p>Лаунчер запустит Minecraft и сразу подключит тебя к <b>f1.rustix.me:35223</b>. Голосовой чат и кастомное меню уже включены.</p>
+            <h3><i class="fa-solid fa-play"></i>Скопируй IP и заходи</h3>
+            <p>В игре: <b>Сетевая игра → Добавить сервер</b> → вставь <b>f1.rustix.me:35223</b> → «Подключиться». Ты в THETOWN.</p>
             <button class="step-link" data-copy-ip style="background:none;border:none;padding:0">
               Скопировать IP <i class="fa-solid fa-copy"></i>
             </button>
@@ -1190,15 +1078,13 @@ section{padding:88px 0;position:relative}
           <div class="footer-col">
             <h4>Навигация</h4>
             <a href="#about">О сервере</a>
-            <a href="#launcher">Лаунчер</a>
-            <a href="#start">Как начать</a>
+                  <a href="#start">Как начать</a>
             <a href="#media">Медиа</a>
             <a href="#team">Руководство</a>
           </div>
           <div class="footer-col">
             <h4>Сервер</h4>
             <button data-copy-ip>IP: f1.rustix.me:35223</button>
-            <button data-download>Скачать лаунчер</button>
             <a href="https://discord.gg/vrdNF4nHX" target="_blank" rel="noopener">Discord</a>
             <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener">Simple Voice Chat</a>
             <a href="https://www.youtube.com/@Vunpos" target="_blank" rel="noopener">YouTube — Vunpos</a>
@@ -1258,8 +1144,8 @@ section{padding:88px 0;position:relative}
         <form id="registerForm" class="hidden" autocomplete="off">
           <div id="registerError" class="form-error hidden"></div>
           <div class="field">
-            <label for="regNick">Никнейм в Minecraft</label>
-            <input type="text" id="regNick" placeholder="Твой игровой ник" maxlength="16" required>
+            <label for="regNick">Ник в игре</label>
+            <input type="text" id="regNick" placeholder="Ник, с которым заходишь на сервер" maxlength="16" required>
           </div>
           <div class="field">
             <label for="regPass">Пароль</label>
@@ -1272,7 +1158,7 @@ section{padding:88px 0;position:relative}
           <button class="btn btn-gold btn-block" type="submit" id="regSubmit">
             <i class="fa-solid fa-user-plus"></i>Создать аккаунт
           </button>
-          <p class="form-note" style="margin-top:14px;margin-bottom:0">Используй свой игровой ник — по нему загружается скин.</p>
+          <p class="form-note" style="margin-top:14px;margin-bottom:0">Введи ник, под которым будешь играть на сервере: по нему загружается скин, и этот же ник нужен для входа на сервер.</p>
         </form>
       </div>
 
@@ -1418,45 +1304,6 @@ section{padding:88px 0;position:relative}
         <div class="tickets-list" id="adminTicketsList"></div>
       </div>
 
-    </div>
-  </div>
-</div>
-
-<!-- ==================== LAUNCHER INSTALL MODAL ==================== -->
-<div class="modal" id="launcherModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <div class="mh-icon mh-gold"><i class="fa-solid fa-download"></i></div>
-      <div class="mh-title">
-        <h3>Установка лаунчера</h3>
-        <span>Windows 10 / 11 · 64-bit</span>
-      </div>
-      <button class="modal-close" data-close="launcherModal"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="modal-body">
-      <ol class="steps-list">
-        <li><div>Нажми <b>«Скачать установщик»</b> — загрузится файл <b>THETOWN-Setup-1.0.0.exe</b>.</div></li>
-        <li><div>Запусти файл и следуй подсказкам установщика. Можно выбрать папку установки и создать ярлык на рабочем столе.</div></li>
-        <li><div>Открой <b>THETOWN</b> с рабочего стола или из меню «Пуск».</div></li>
-        <li><div>Войди своим <b>ником и паролем с сайта THETOWN</b> — аккаунт синхронизируется автоматически.</div></li>
-        <li><div>Нажми <b>«Играть»</b>. Первый запуск скачает Java 17, Forge 1.20.1 и ресурсы игры — это может занять несколько минут.</div></li>
-      </ol>
-
-      <div class="warn-box">
-        <b>Windows SmartScreen.</b> Если система пишет «Windows защитила ваш компьютер», нажми
-        «Подробнее» → «Выполнить в любом случае». Это стандартное предупреждение для новых
-        установщиков без платной цифровой подписи.
-      </div>
-
-      <div class="warn-box" style="background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.3);color:#fde68a">
-        <b>Удаление.</b> Через «Установка и удаление программ» (или «Приложения» в Windows 11),
-        либо кнопкой <b>«Удалить»</b> в настройках лаунчера. Файлы игры в папке данных останутся,
-        если не удалить их вручную.
-      </div>
-
-      <button class="btn btn-gold btn-block" data-download style="margin-top:18px">
-        <i class="fa-solid fa-download"></i>Скачать установщик
-      </button>
     </div>
   </div>
 </div>
@@ -2238,84 +2085,6 @@ function openAdminPanel() {
   syncAllFromFirebase(true);
 }
 
-/* ---------------- LAUNCHER DOWNLOAD ----------------
-   Откуда сайт берёт установщик (проверяется по порядку):
-   1) LAUNCHER_RELEASE_URL — прямая ссылка, например с GitHub Releases:
-      'https://github.com/ТВОЙ_НИК/ТВОЙ_РЕПО/releases/latest/download/THETOWN-Setup-1.0.0.exe'
-   2) LAUNCHER_FILE — файл, лежащий рядом с index.html в папке downloads/
-   Если есть и то и другое — приоритет у ссылки Releases. */
-const LAUNCHER_FILE = 'downloads/THETOWN-Setup-1.0.0.exe';
-/* Ссылка на файл установщика. Проверено: отдаёт THETOWN-Setup-1.0.0.exe (77 МБ).
-   Варианты на будущее:
-   • этот адрес (конкретный релиз): .../releases/download/v1.0.0/THETOWN-Setup-1.0.0.exe
-   • «всегда последний релиз»:      .../releases/latest/download/THETOWN-Setup-1.0.0.exe
-     (тогда при обновлении лаунчера сайт править не нужно — главное, чтобы имя файла
-      в релизе оставалось THETOWN-Setup-1.0.0.exe) */
-const LAUNCHER_RELEASE_URL = 'https://github.com/ilya211kaminskiy-coder/THETOWNN/releases/download/v1.0.0/THETOWN-Setup-1.0.0.exe';
-
-let launcherUrlCache;
-async function findLauncherUrl() {
-  if (launcherUrlCache !== undefined) return launcherUrlCache;
-
-  /* 1) файл рядом с сайтом (папка downloads/) — это тот же домен, поэтому проверка работает */
-  if (LAUNCHER_FILE) {
-    try {
-      const res = await fetch(LAUNCHER_FILE, { method: 'HEAD', cache: 'no-store' });
-      if (res.ok) { launcherUrlCache = LAUNCHER_FILE; return launcherUrlCache; }
-    } catch (e) { /* файла нет — идём дальше */ }
-  }
-
-  /* 2) GitHub Releases. Проверить ссылку запросом из браузера нельзя: GitHub не отдаёт
-     CORS-заголовки для файлов релизов, поэтому любая проверка тут «падает» и кнопка
-     врала бы «установщик не загружен». Поэтому ссылку просто используем как есть. */
-  if (LAUNCHER_RELEASE_URL) { launcherUrlCache = LAUNCHER_RELEASE_URL; return launcherUrlCache; }
-
-  launcherUrlCache = null;
-  return null;
-}
-
-/* Запуск скачивания строго внутри клика: браузеры блокируют загрузку,
-   начатую после await (считают её не «пользовательской»). */
-function startLauncherDownload(url) {
-  toast('Начинаем загрузку установщика...', 'success');
-  try {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'THETOWN-Setup-1.0.0.exe';
-    /* GitHub отдаёт файл релиза с Content-Disposition: attachment,
-       поэтому браузер скачивает его сам, без перехода на страницу */
-    link.rel = 'noopener';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  } catch (e) {
-    /* если браузер заблокировал «программный» клик — уводим на файл напрямую */
-    window.location.href = url;
-    return;
-  }
-  setTimeout(function () {
-    toast('Если загрузка не началась — нажми кнопку ещё раз или открой ссылку вручную: ' + url, 'info');
-  }, 5000);
-}
-
-async function downloadLauncher() {
-  /* адрес уже известен (подготовлен при загрузке страницы) — качаем мгновенно */
-  if (launcherUrlCache) { startLauncherDownload(launcherUrlCache); return; }
-
-  const url = await findLauncherUrl();
-  if (!url) {
-    toast('Установщик ещё не загружен. Положи ' + LAUNCHER_FILE + ' или укажи LAUNCHER_RELEASE_URL', 'error');
-    openModal('launcherModal');
-    return;
-  }
-  startLauncherDownload(url);
-}
-
-/* готовим адрес заранее, чтобы клик по кнопке сразу начинал загрузку */
-window.addEventListener('load', function () {
-  setTimeout(function () { findLauncherUrl(); }, 600);
-});
-
 /* ---------------- COPY IP ---------------- */
 function copyIP() {
   const done = function () { toast('IP скопирован: ' + SERVER_IP, 'success'); };
@@ -2349,16 +2118,6 @@ function bindEvents() {
   document.addEventListener('click', function (e) {
     const t = e.target.closest('[data-copy-ip]');
     if (t) { e.preventDefault(); copyIP(); }
-  });
-
-  /* скачивание лаунчера */
-  document.addEventListener('click', function (e) {
-    const t = e.target.closest('[data-download]');
-    if (t) { e.preventDefault(); downloadLauncher(); }
-  });
-  ['howInstallBtn', 'howInstallBtn2'].forEach(function (id) {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', function () { openModal('launcherModal'); });
   });
 
   /* header scroll */
@@ -2609,5 +2368,5 @@ if (document.readyState === 'loading') {
 }
 
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5b825950c1d6881',t:'MTc5NDg0OTQyMQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5b825950c1d6881',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bf11a5de431d42',t:'MTc5NDkyMjAwNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bf11a5de431d42',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
