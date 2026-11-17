@@ -385,7 +385,7 @@ section{padding:88px 0;position:relative}
 /* ============================================================
    TEAM
    ============================================================ */
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
 .leader{display:flex;flex-direction:column;align-items:center;text-align:center;padding:38px 26px 32px}
 .leader-skin{
   width:132px;height:200px;border-radius:18px;position:relative;margin-bottom:22px;
@@ -398,6 +398,12 @@ section{padding:88px 0;position:relative}
 .leader-skin::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:56px;
   background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));pointer-events:none;
+}
+.leader-skin.no-skin::before{
+  content:attr(data-initial);position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Luckiest Guy',cursive;font-size:76px;color:#f5a524;opacity:.92;
+  text-shadow:0 12px 34px rgba(245,158,11,.45);
 }
 .leader-skin img{image-rendering:pixelated;height:170px;width:auto;filter:drop-shadow(0 12px 20px rgba(0,0,0,.7));position:relative;z-index:1}
 .leader h3{font-size:19px;font-weight:900;margin-bottom:10px}
@@ -524,6 +530,11 @@ section{padding:88px 0;position:relative}
 }
 
 /* PROFILE */
+.pf-ava{display:flex;align-items:center;gap:14px;margin:4px 0 18px;padding:14px;border-radius:14px;background:#0e131c;border:1px solid rgba(255,255,255,.07)}
+.pf-ava img{width:66px;height:66px;border-radius:14px;object-fit:cover;background:#0c0f17;border:1px solid rgba(245,158,11,.35);flex-shrink:0}
+.pf-ava-info{min-width:0;display:flex;flex-direction:column;gap:9px}
+.pf-ava-hint{font-size:12px;line-height:1.4;color:var(--muted)}
+.pf-ava-btns{display:flex;gap:8px;flex-wrap:wrap}
 .pf-head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
 .pf-head img{
   width:74px;height:74px;border-radius:16px;image-rendering:pixelated;
@@ -1007,7 +1018,7 @@ section{padding:88px 0;position:relative}
       <div class="team-grid">
         <div class="card leader reveal">
           <div class="leader-skin">
-            <img src="https://minotar.net/armor/body/Vunpos/120.png" alt="Vunpos" loading="lazy" onerror="this.style.opacity=.15">
+            <img src="https://minotar.net/armor/body/Vunpos/120.png" alt="Vunpos" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('no-skin');this.parentNode.setAttribute('data-initial','V')">
           </div>
           <h3>Vunpos</h3>
           <span class="badge badge-gold"><i class="fa-solid fa-crown"></i>Создатель сервера</span>
@@ -1016,7 +1027,7 @@ section{padding:88px 0;position:relative}
 
         <div class="card leader reveal">
           <div class="leader-skin">
-            <img src="https://minotar.net/armor/body/MrLov3n4ik/120.png" alt="MrLov3n4ik" loading="lazy" onerror="this.style.opacity=.15">
+            <img src="https://minotar.net/armor/body/MrLov3n4ik/120.png" alt="MrLov3n4ik" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('no-skin');this.parentNode.setAttribute('data-initial','M')">
           </div>
           <h3>MrLov3n4ik</h3>
           <span class="badge badge-red"><i class="fa-solid fa-video"></i>Контент-креатор</span>
@@ -1025,7 +1036,16 @@ section{padding:88px 0;position:relative}
 
         <div class="card leader reveal">
           <div class="leader-skin">
-            <img src="https://minotar.net/armor/body/Sanraizzz/120.png" alt="Sanraizzz" loading="lazy" onerror="this.style.opacity=.15">
+            <img src="https://minotar.net/armor/body/Tylopsketch/120.png" alt="Tylopsketch" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('no-skin');this.parentNode.setAttribute('data-initial','T')">
+          </div>
+          <h3>Tylopsketch</h3>
+          <span class="badge badge-red"><i class="fa-solid fa-video"></i>Контент-креатор</span>
+          <p>Контент-креатор THETOWN. Снимает видео и стримы о жизни сервера: города, войны, союзы и большие ивенты.</p>
+        </div>
+
+        <div class="card leader reveal">
+          <div class="leader-skin">
+            <img src="https://minotar.net/armor/body/Sanraizzz/120.png" alt="Sanraizzz" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('no-skin');this.parentNode.setAttribute('data-initial','S')">
           </div>
           <h3>Sanraizzz</h3>
           <span class="badge badge-blue"><i class="fa-solid fa-shield-halved"></i>Администратор • Техподдержка</span>
@@ -1175,6 +1195,18 @@ section{padding:88px 0;position:relative}
         <div class="pf-rows">
           <div class="pf-row"><span>Статус аккаунта</span><b id="pfStatus">—</b></div>
           <div class="pf-row"><span>Дата регистрации</span><b id="pfDate">—</b></div>
+        </div>
+
+        <div class="pf-ava">
+          <img id="pfAvatar" src="https://minotar.net/helm/Steve/150.png" alt="Аватар">
+          <div class="pf-ava-info">
+            <div class="pf-ava-hint">Аватар профиля — показывается в шапке сайта и в списке игроков. Картинка автоматически обрежется до квадрата.</div>
+            <div class="pf-ava-btns">
+              <button class="btn btn-ghost btn-sm" type="button" id="avatarPickBtn"><i class="fa-solid fa-image"></i>Загрузить аватар</button>
+              <button class="btn btn-ghost btn-sm hidden" type="button" id="avatarClearBtn"><i class="fa-solid fa-trash"></i>Удалить</button>
+            </div>
+            <input type="file" id="avatarInput" accept="image/png,image/jpeg,image/webp,image/gif" class="hidden">
+          </div>
         </div>
 
         <div id="banBlock" class="ban-block hidden">
@@ -1437,11 +1469,58 @@ function buildUserRecord(base, patch, key) {
     banned: !!u.banned,
     banReason: u.banReason || '',
     bannedBy: u.bannedBy || '',
-    bannedAt: u.bannedAt || 0
+    bannedAt: u.bannedAt || 0,
+    avatar: (typeof u.avatar === 'string' && u.avatar.indexOf('data:image') === 0) ? u.avatar : ''
   };
 }
 function helmUrl(nick, size) {
   return 'https://minotar.net/helm/' + encodeURIComponent(nick || 'Steve') + '/' + (size || 150) + '.png';
+}
+
+/* Свой аватар игрока (если загружен) или стандартный скин с Minotar */
+function avatarUrl(user, nick, size) {
+  const custom = user && user.avatar;
+  if (typeof custom === 'string' && custom.indexOf('data:image') === 0) return custom;
+  return helmUrl(nick, size);
+}
+
+/* Берём картинку, обрезаем по центру до квадрата и сжимаем в 256×256 JPEG */
+function resizeImageFile(file, size) {
+  size = size || 256;
+  return new Promise(function (resolve, reject) {
+    const reader = new FileReader();
+    reader.onerror = function () { reject(new Error('не удалось прочитать файл')); };
+    reader.onload = function () {
+      const img = new Image();
+      img.onerror = function () { reject(new Error('это не картинка')); };
+      img.onload = function () {
+        try {
+          const side = Math.min(img.width, img.height);
+          const sx = (img.width - side) / 2;
+          const sy = (img.height - side) / 2;
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+          resolve(canvas.toDataURL('image/jpeg', 0.85));
+        } catch (e) { reject(new Error('не удалось обработать картинку')); }
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function saveAvatarData(dataUrl) {
+  if (!state.me) throw new Error('сначала войди в аккаунт');
+  const user = getUser(state.me);
+  if (!user) throw new Error('аккаунт не найден');
+  if (user.banned) throw new Error('аккаунт заблокирован');
+  const upd = buildUserRecord(user, { avatar: dataUrl || '' }, state.me);
+  await dbPut('users/' + state.me, upd);
+  state.users[state.me] = upd;
+  renderAll();
 }
 function formatDate(ts) {
   if (ts === 0 || ts === '' || ts === null || ts === undefined) return 'Неизвестно';
@@ -1588,7 +1667,7 @@ function renderHeaderAccount() {
     if (state.me) {
       const nick = displayNick(state.me);
       btn.className = 'account-btn account-chip';
-      btn.innerHTML = '<img src="' + helmUrl(nick, 40) + '" alt="' + esc(nick) + '" onerror="this.style.opacity=.2"><span>' + esc(nick) + '</span>';
+      btn.innerHTML = '<img src="' + avatarUrl(getUser(state.me), nick, 40) + '" alt="' + esc(nick) + '" onerror="this.style.opacity=.2"><span>' + esc(nick) + '</span>';
     } else {
       btn.className = 'account-btn';
       btn.innerHTML = '<i class="fa-solid fa-user"></i><span>Аккаунт</span>';
@@ -1621,7 +1700,15 @@ function renderProfile() {
   const banned = !!user.banned;
 
   const skin = $('#pfSkin');
-  if (skin) skin.src = helmUrl(nick, 150);
+  if (skin) skin.src = avatarUrl(user, nick, 150);
+
+  const pfAva = $('#pfAvatar');
+  if (pfAva) pfAva.src = avatarUrl(user, nick, 150);
+  const clearAva = $('#avatarClearBtn');
+  if (clearAva) clearAva.classList.toggle('hidden', !(typeof user.avatar === 'string' && user.avatar.indexOf('data:image') === 0));
+  const pickAva = $('#avatarPickBtn');
+  if (pickAva) pickAva.disabled = banned;
+  if (clearAva) clearAva.disabled = banned;
 
   $('#pfNick').textContent = nick;
 
@@ -1660,7 +1747,7 @@ function ticketCardHtml(id, t) {
   const nick = t.nick || 'Неизвестный';
   let html = '<div class="ticket">';
   html += '<div class="ticket-top">';
-  html += '<img class="avatar-sm" src="' + helmUrl(nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
+  html += '<img class="avatar-sm" src="' + avatarUrl(getUser(normKey(nick)), nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
   html += '<div><div class="t-name">' + esc(nick) + '</div><div class="t-date">' + esc(formatDateTime(t.createdAt)) + '</div></div>';
   html += '<span class="ticket-id">#' + esc(String(id).slice(-6)) + '</span>';
   html += '</div>';
@@ -1752,7 +1839,7 @@ function renderPlayers() {
     const admin = isAdmin(k);
     const banned = !!u.banned;
     let html = '<div class="prow">';
-    html += '<img src="' + helmUrl(nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
+    html += '<img src="' + avatarUrl(u, nick, 40) + '" alt="" onerror="this.style.opacity=.2">';
     html += '<div class="pinfo">';
     html += '<div class="pnick">' + esc(nick);
     html += admin
@@ -1900,7 +1987,7 @@ async function doRegister(nick, pass, pass2) {
 
   const user = buildUserRecord(null, {
     nick: isAdmin(key) ? ADMINS[key].nick : clean,
-    password: pass,
+    password: hashPass(pass),   // в базе хранится только хеш пароля
     city: '',
     createdAt: Date.now(),
     banned: false,
@@ -2238,6 +2325,47 @@ function bindEvents() {
   /* city save / logout */
   const saveCityBtn = $('#saveCityBtn');
   if (saveCityBtn) saveCityBtn.addEventListener('click', saveCity);
+
+  /* ── загрузка / удаление аватара ── */
+  const avatarPickBtn = $('#avatarPickBtn');
+  const avatarInput = $('#avatarInput');
+  const avatarClearBtn = $('#avatarClearBtn');
+
+  if (avatarPickBtn && avatarInput) {
+    avatarPickBtn.addEventListener('click', function () { avatarInput.click(); });
+    avatarInput.addEventListener('change', async function () {
+      const file = avatarInput.files && avatarInput.files[0];
+      avatarInput.value = '';
+      if (!file) return;
+      if (!/^image\//.test(file.type)) { toast('Нужен файл-картинка: png, jpg или webp', 'error'); return; }
+      if (file.size > 8 * 1024 * 1024) { toast('Файл больше 8 МБ — выбери картинку поменьше', 'error'); return; }
+      setBtnLoading(avatarPickBtn, true, 'Загрузка...');
+      try {
+        const dataUrl = await resizeImageFile(file, 256);
+        await saveAvatarData(dataUrl);
+        toast('Аватар обновлён', 'success');
+      } catch (err) {
+        toast('Ошибка: ' + err.message, 'error');
+      } finally {
+        setBtnLoading(avatarPickBtn, false);
+      }
+    });
+  }
+
+  if (avatarClearBtn) {
+    avatarClearBtn.addEventListener('click', async function () {
+      if (!confirm('Удалить свой аватар и вернуть скин Minecraft?')) return;
+      setBtnLoading(avatarClearBtn, true, 'Удаляем...');
+      try {
+        await saveAvatarData('');
+        toast('Аватар удалён — снова скин из Minecraft', 'success');
+      } catch (err) {
+        toast('Ошибка: ' + err.message, 'error');
+      } finally {
+        setBtnLoading(avatarClearBtn, false);
+      }
+    });
+  }
   const cityInput = $('#cityInput');
   if (cityInput) cityInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') { e.preventDefault(); saveCity(); }
@@ -2368,5 +2496,5 @@ if (document.readyState === 'loading') {
 }
 
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c11d699b1fb905',t:'MTc5NDk0MzQ1OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c11d699b1fb905',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c169ce09035778',t:'MTc5NDk0NjU4Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c169ce09035778',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
